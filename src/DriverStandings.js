@@ -4,23 +4,24 @@ import "./App.css";
 
 const DriverStandings = () => {
   const [dStandings, setDStandings] = useState([]);
-  const [input, setInput] = useState();
+  const [input, setInput] = useState(2021);
   const [submit, setSubmit] = useState(2021);
+ 
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    setSubmit(input);
-    getData();
+    getData();    
   };
 
+  let url;
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
-    const url = `//ergast.com/api/f1/${submit}/driverStandings.json`;
+    url = `//ergast.com/api/f1/${input}/driverStandings.json`;
     axios(url)
       .then((response) => {
         if (response.data.MRData) {
@@ -28,7 +29,7 @@ const DriverStandings = () => {
             response.data.MRData.StandingsTable.StandingsLists[0]
               .DriverStandings
           );
-          console.log(response.data);
+          //console.log(response.data);
         }
       })
       .catch((error) => {
@@ -53,6 +54,7 @@ const DriverStandings = () => {
                 borderBottom: "solid 2px black",
                 backgroundColor: "transparent",
               }}
+              placeholder="between  1950 to 2021"
               onChange={handleInput}
             />
             <input
@@ -66,9 +68,12 @@ const DriverStandings = () => {
                 border: "solid 2px black",
                 backgroundColor: "black",
               }}
+              
               onClick={handleSubmit}
             />
           </div>
+          {(submit>=1950 && submit<=2022)?
+          <div className="standingsContainer2">
           <p id="standingsTitle"> <img src={require('./f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Drivers Standings {submit}</p>
           <p className="driverStandingsItems">
             <span style={{ backgroundColor: "transparent", }}>1</span>
@@ -115,6 +120,7 @@ const DriverStandings = () => {
               {dStandings[4].points}
             </span>
           </p>
+        </div>:<p className="driverStandingsItems">Data only available from 1950 to 2021</p>}
         </div>
       ) : (
         <div className="standingsContainer" style={{justifyContent:'center'}}>

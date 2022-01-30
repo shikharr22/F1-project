@@ -4,7 +4,7 @@ import "./App.css";
 
 const ConstructorsStandings = () => {
   const [cStandings, setCStandings] = useState([]);
-  const [input, setInput] = useState();
+  const [input, setInput] = useState(2021);
   const [submit, setSubmit] = useState(2021);
 
   const handleInput = (e) => {
@@ -12,7 +12,6 @@ const ConstructorsStandings = () => {
   };
 
   const handleSubmit = (e) => {
-    setSubmit(input);
     getData();
   };
 
@@ -21,7 +20,7 @@ const ConstructorsStandings = () => {
   }, []);
 
   const getData = () => {
-    const url = `//ergast.com/api/f1/${submit}/constructorStandings.json`;
+    const url = `//ergast.com/api/f1/${input}/constructorStandings.json`;
     axios(url)
       .then((response) => {
         if (response.data.MRData) {
@@ -53,6 +52,7 @@ const ConstructorsStandings = () => {
                 borderBottom: "solid 2px black",
                 backgroundColor: "transparent",
               }}
+              placeholder="between  1950 to 2021"
               onChange={handleInput}
             />
             <input
@@ -69,6 +69,8 @@ const ConstructorsStandings = () => {
               onClick={handleSubmit}
             />
           </div>
+          {(submit>=1950 && submit<=2022)?
+          <div className="standingsContainer2">
           <p id="standingsTitle"> <img src={require('./f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Constructors Standings {submit}</p>
           <p className="constructorsStandingsItems">
             <span style={{ backgroundColor: "transparent" }}>1</span>
@@ -99,6 +101,7 @@ const ConstructorsStandings = () => {
             <span style={{ backgroundColor: "transparent" }}> {cStandings[4].Constructor.name}</span>{" "}
             <span style={{ backgroundColor: "transparent" }}>{cStandings[4].points}</span>
           </p>
+        </div>:<p className="driverStandingsItems">Data only available from 1950 to 2021</p>}
         </div>
       ) : (
         <div

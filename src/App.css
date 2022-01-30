@@ -119,17 +119,16 @@
   width: 50%;
   display: flex;
   justify-content: center;
+  opacity:1;
  
 }
-
-
 
 #constructorsStandings {
   height: 100%;
   width: 50%;
   display: flex;
   justify-content: center;
-
+  opacity:1;
 }
 
 #news {
@@ -148,6 +147,17 @@
   border-radius: 5px;
   margin: 4vh;
   background-image: linear-gradient(to right, #000000, #2b0c13, #4f0a18, #720115, #940007);
+}
+
+.standingsContainer2
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 }
 
 #standingsTitle {

@@ -33,6 +33,8 @@ const App = () => {
       "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:0.4;z-index:1;";
   };
 
+  
+    
   return (
     <>
       <div id="container">
@@ -63,7 +65,12 @@ const App = () => {
         </div>
         <div id="section2">
           <div className="tabs">
-            <a href="#standings">
+            <a
+              href="#standings"
+              onClick={() =>
+                (document.getElementById("driversStandings").style.opacity = 1)
+              }
+            >
               <img
                 style={{ width: "90%", height: "100%" }}
                 src={require("./drivers.jpg")}
@@ -71,7 +78,14 @@ const App = () => {
             </a>
           </div>
           <div className="tabs">
-            <a href="#standings">
+            <a
+              href="#standings"
+              onClick={() =>
+                (document.getElementById(
+                  "constructorsStandings"
+                ).style.opacity = 1)
+              }
+            >
               <img
                 style={{ top: "0%", width: "90%", height: "100%" }}
                 src={require("./constructors.jpg")}
@@ -99,7 +113,7 @@ const App = () => {
             <DriverStandings />
           </div>
           <div id="constructorsStandings">
-            <ConstructorsStandings/>
+            <ConstructorsStandings />
           </div>
         </div>
         <div id="news"></div>
