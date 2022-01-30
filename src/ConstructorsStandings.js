@@ -69,7 +69,7 @@ const ConstructorsStandings = () => {
               onClick={handleSubmit}
             />
           </div>
-          {(submit>=1950 && submit<=2022)?
+          {(input>=1950 && input<=2022)?
           <div className="standingsContainer2">
           <p id="standingsTitle"> <img src={require('./f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Constructors Standings {submit}</p>
           <p className="constructorsStandingsItems">
