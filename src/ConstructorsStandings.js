@@ -21,7 +21,7 @@ const ConstructorsStandings = () => {
   }, []);
 
   const getData = () => {
-    const url = `http://ergast.com/api/f1/${submit}/constructorStandings.json`;
+    const url = `//ergast.com/api/f1/${submit}/constructorStandings.json`;
     axios(url)
       .then((response) => {
         if (response.data.MRData) {

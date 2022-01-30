@@ -20,7 +20,7 @@ const DriverStandings = () => {
     getData();
   }, []);
   const getData = () => {
-    const url = `http://ergast.com/api/f1/${submit}/driverStandings.json`;
+    const url = `//ergast.com/api/f1/${submit}/driverStandings.json`;
     axios(url)
       .then((response) => {
         if (response.data.MRData) {
