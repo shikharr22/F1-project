@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
-import Navbar from "./Navbar";
+import React from "react";
+
 import "./App.css";
-import axios from "axios";
+import ConstructorsStandings from "./ConstructorsStandings";
 
+import DriverStandings from "./DriverStandings";
 const App = () => {
-
-  const [data,setData]=useState([])
+  console.log("App Render");
   const handlePrev = () => {
     document.getElementById("prevRace").style =
       "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;";
@@ -33,23 +33,6 @@ const App = () => {
       "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:0.4;z-index:1;";
   };
 
-  const getData = async () => {
-    const response=await axios("http://ergast.com/api/f1/2021/5/driverStandings.json")
-    setData(response.data);
-
-    if(data!=undefined)
-    {
-      console.log(data.MRData.StandingsTable);
-    }
-
-    
-  };
-
-  useEffect(() => {
-    getData();
-  },[]);
-
-  
   return (
     <>
       <div id="container">
@@ -110,9 +93,14 @@ const App = () => {
             />
           </div>
         </div>
+        {/* dStandings.MRData.StandingsTable.StandingsLists[0].DriverStandings */}
         <div id="standings">
-          <div id="driversStandings"></div>
-          <div id="constructorsStandings"></div>
+          <div id="driversStandings">
+            <DriverStandings />
+          </div>
+          <div id="constructorsStandings">
+            <ConstructorsStandings/>
+          </div>
         </div>
         <div id="news"></div>
       </div>
