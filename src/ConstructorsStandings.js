@@ -71,7 +71,7 @@ const ConstructorsStandings = () => {
           </div>
           {(input>=1950 && input<=2022)?
           <div className="standingsContainer2">
-          <p id="standingsTitle"> <img src={require('./f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Constructors Standings {submit}</p>
+          <p id="standingsTitle"> <img src={require('./Assets/f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Constructors Standings {submit}</p>
           <p className="constructorsStandingsItems">
             <span style={{ backgroundColor: "transparent" }}>1</span>
             <span style={{ backgroundColor: "transparent" }}> {cStandings[0].Constructor.name}</span>{" "}
@@ -109,7 +109,7 @@ const ConstructorsStandings = () => {
           style={{ justifyContent: "center" }}
         >
           <img
-            src={require("./loading.png")}
+            src={require("./Assets/loading.png")}
             style={{
               backgroundColor: "transparent",
               height: "100px",

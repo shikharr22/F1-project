@@ -28,7 +28,7 @@
   width: 100vw;
   height: 100vh;
   background-color: black;
-  background: url("./homeScreen1.png");
+  background: url("./Assets/homeScreen1.png");
   perspective: -110px;
   background-repeat: no-repeat;
   background-position: center;
@@ -40,6 +40,7 @@
   align-items: center;
   width: 35%;
   height: 40%;
+  color:white;
   background-color: grey;
   margin-top: 15px;
   z-index: 1;
@@ -56,11 +57,13 @@
 #currentRace {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 35%;
   height: 40%;
   background-color: grey;
   margin-top: 15px;
   z-index: 2;
+  color:white;
   position: absolute;
   top: 5%;
   right: 50%;
@@ -74,10 +77,12 @@
 #upcomingRace {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 35%;
   height: 40%;
   margin-top: 15px;
   z-index: 1;
+  color:white;
   position: absolute;
   top: 8%;
   right: 25%;

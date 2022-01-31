@@ -77,7 +77,7 @@ const DriverStandings = () => {
           </div>
           {(submit>=1950 && submit<=2022)?
           <div className="standingsContainer2">
-          <p id="standingsTitle"> <img src={require('./f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Drivers Standings {submit}</p>
+          <p id="standingsTitle"> <img src={require('./Assets/f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Drivers Standings {submit}</p>
           <p className="driverStandingsItems">
             <span style={{ backgroundColor: "transparent", }}>1</span>
             <span style={{ backgroundColor: "transparent" }}>
@@ -127,7 +127,7 @@ const DriverStandings = () => {
         </div>
       ) : (
         <div className="standingsContainer" style={{justifyContent:'center'}}>
-        <img src={require('./loading.png')} style={{backgroundColor:'transparent',height:'100px',width:'100px'}}/>
+        <img src={require('./Assets/loading.png')} style={{backgroundColor:'transparent',height:'100px',width:'100px'}}/>
         </div>
       )}
     </>
