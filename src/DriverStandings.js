@@ -1,27 +1,30 @@
 import React, { useState, memo, useEffect, useMemo } from "react";
 import axios from "axios";
 import "./App.css";
+import { Input } from "@mui/material";
 
 const DriverStandings = () => {
   const [dStandings, setDStandings] = useState([]);
   const [input, setInput] = useState(2021);
   const [submit, setSubmit] = useState(2021);
+  
  
-
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    getData();    
+    setSubmit(input);
+    getData();
+      
   };
 
-  let url;
+  
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
-    url = `//ergast.com/api/f1/${input}/driverStandings.json`;
+    let url = `//ergast.com/api/f1/${submit}/driverStandings.json`;
     axios(url)
       .then((response) => {
         if (response.data.MRData) {
@@ -72,7 +75,7 @@ const DriverStandings = () => {
               onClick={handleSubmit}
             />
           </div>
-          {(input>=1950 && input<=2022)?
+          {(submit>=1950 && submit<=2022)?
           <div className="standingsContainer2">
           <p id="standingsTitle"> <img src={require('./f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Drivers Standings {submit}</p>
           <p className="driverStandingsItems">

@@ -3,7 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
   font-size: 15px;
-  background-color: black;
+  background-color: transparent;
   font-family: "Bungee";
 }
 
@@ -21,10 +21,18 @@
   flex-direction: column;
   overflow: hidden;
 }
-#section1 {
+#homeScreenSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100vw;
-  height: 45vh;
+  height: 100vh;
   background-color: black;
+  background: url("./homeScreen1.png");
+  perspective: -110px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100vw 100vh;
 }
 #prevRace {
   display: flex;
@@ -32,65 +40,80 @@
   align-items: center;
   width: 35%;
   height: 40%;
-  background-color: cyan;
+  background-color: grey;
   margin-top: 15px;
   z-index: 1;
   position: absolute;
   top: 8%;
   right: 75%;
   transform: translate(50%, 5%) scale(0.8);
-  opacity: 0.4;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(8, 8, 14, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }
 #currentRace {
   display: flex;
   justify-content: center;
   width: 35%;
   height: 40%;
-  background-color: white;
+  background-color: grey;
   margin-top: 15px;
   z-index: 2;
   position: absolute;
   top: 5%;
   right: 50%;
   transform: translate(50%, 5%);
-  opacity: 1;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(8, 8, 14, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }
 #upcomingRace {
   display: flex;
   justify-content: center;
   width: 35%;
   height: 40%;
-  background-color: orange;
   margin-top: 15px;
   z-index: 1;
   position: absolute;
   top: 8%;
   right: 25%;
   transform: translate(50%, 5%) scale(0.8);
-  opacity: 0.4;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(8, 8, 14, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }
 #navigation {
+  position: relative;
+  top: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 12vh;
   margin-top: 14px;
-  background-color: black;
+  background-color: transparent;
 }
 .navigationItem {
   text-decoration: none;
   color: white;
-  margin: 0 10px 0 10px;
   text-transform: uppercase;
+  background-color: transparent;
 }
 .navigationItem:hover {
   transform: scale(1.1);
 }
-#section2 {
+#navigationTabs {
+  position: relative;
+  top: 40vh;
   width: 100vw;
   height: 42vh;
-  background-color: black;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,29 +121,30 @@
 .tabs {
   width: 15%;
   height: 85%;
-  margin: 20px;
+  margin: 10px;
   cursor: pointer;
-  opacity: 0.8;
-}
-.tabs:hover {
-  transform: scale(1.05);
   opacity: 1;
+  background-color: transparent;
+  transform: scale(0.8);
 }
+
 
 #standings {
   display: flex;
   width: 100vw;
   height: 100vh;
-  margin-top: 20px;
+  background-color: black;
 }
+
+
+
 
 #driversStandings {
   height: 100%;
   width: 50%;
   display: flex;
   justify-content: center;
-  opacity:1;
- 
+  opacity: 1;
 }
 
 #constructorsStandings {
@@ -128,7 +152,7 @@
   width: 50%;
   display: flex;
   justify-content: center;
-  opacity:1;
+  opacity: 1;
 }
 
 #news {
@@ -146,11 +170,17 @@
   height: 90%;
   border-radius: 5px;
   margin: 4vh;
-  background-image: linear-gradient(to right, #000000, #2b0c13, #4f0a18, #720115, #940007);
+  background-image: linear-gradient(
+    to right,
+    #000000,
+    #2b0c13,
+    #4f0a18,
+    #720115,
+    #940007
+  );
 }
 
-.standingsContainer2
-{
+.standingsContainer2 {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -163,7 +193,7 @@
 #standingsTitle {
   background-color: transparent;
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 80%;
   height: 7%;
   align-items: center;
@@ -193,5 +223,13 @@
   color: #daa520;
   margin: 10px;
   border: none;
-  background-color: black; 
+  background-color: black;
+}
+
+/* Animations */
+
+@keyframes hoverEffect {
+  to {
+    transform: scale(1);
+  }
 }
