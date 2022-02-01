@@ -94,7 +94,7 @@ const DriverStandings = () => {
                 type="text"
                 style={{
                   marginRight: "10px",
-                  fontSize: "14px",
+                  fontSize: "12px",
                   color: "white",
                   borderTop: "none",
                   borderLeft: "none",
@@ -110,13 +110,15 @@ const DriverStandings = () => {
                 type="submit"
                 value="Submit Year"
                 style={{
+                  width: "8rem",
                   marginTop: "10px",
-                  padding: "10px",
+                  padding: "5px",
                   cursor: "pointer",
                   fontSize: "12px",
-                  color: "white",
+                  color: "rgba(206,147,9,0.9)",
                   border: "solid 2px black",
-                  backgroundColor: "black",
+                  backgroundColor: "black ",
+                  backdropFilter:"blur(10px)",
                 }}
                 onClick={handleSubmitYear}
               />
@@ -127,7 +129,7 @@ const DriverStandings = () => {
                 type="text"
                 style={{
                   marginRight: "10px",
-                  fontSize: "14px",
+                  fontSize: "12px",
                   color: "white",
                   borderTop: "none",
                   borderLeft: "none",
@@ -144,13 +146,15 @@ const DriverStandings = () => {
                 type="submit"
                 value="Submit Round"
                 style={{
+                  width: "8rem",
                   marginTop: "10px",
-                  padding: "10px",
+                  padding: "5px",
                   cursor: "pointer",
                   fontSize: "12px",
-                  color: "white",
+                  color: "rgba(206,147,9,0.9)",
                   border: "solid 2px black",
-                  backgroundColor: "black",
+                  backgroundColor: "black ",
+                  backdropFilter:"blur(10px)",
                 }}
                 onClick={handleSubmitRound}
               />
@@ -232,14 +236,7 @@ const DriverStandings = () => {
           className="standingsContainer"
           style={{ justifyContent: "center" }}
         >
-          <img
-            src={require("./Assets/loading.png")}
-            style={{
-              backgroundColor: "transparent",
-              height: "100px",
-              width: "100px",
-            }}
-          />
+          <div className="spinner"></div>
         </div>
       )}
     </>

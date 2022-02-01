@@ -87,7 +87,7 @@ const ConstructorsStandings = () => {
               type="text"
               style={{
                 marginRight: "10px",
-                fontSize: "14px",
+                fontSize: "12px",
                 color: "white",
                 borderTop: "none",
                 borderLeft: "none",
@@ -103,13 +103,15 @@ const ConstructorsStandings = () => {
               type="submit"
               value="Submit Year"
               style={{
-                marginTop:'10px',
-                padding: "10px",
-                cursor: "pointer",
-                fontSize: "12px",
-                color: "white",
-                border: "solid 2px black",
-                backgroundColor: "black",
+                width: "8rem",
+                  marginTop: "10px",
+                  padding: "5px",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  color: "rgba(206,147,9,0.9)",
+                  border: "solid 2px black",
+                  backgroundColor: "black ",
+                  backdropFilter:"blur(10px)",
               }}
               onClick={handleSubmitYear}
             /></div>
@@ -119,13 +121,13 @@ const ConstructorsStandings = () => {
               type="text"
               style={{
                 marginRight: "10px",
-                fontSize: "14px",
-                color: "white",
-                borderTop: "none",
-                borderLeft: "none",
-                borderRight: "none",
-                borderBottom: "solid 2px black",
-                backgroundColor: "transparent",
+                  fontSize: "12px",
+                  color: "white",
+                  borderTop: "none",
+                  borderLeft: "none",
+                  borderRight: "none",
+                  borderBottom: "solid 2px black",
+                  backgroundColor: "transparent",
               }}
               placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
               onChange={handleInputRound}
@@ -136,13 +138,15 @@ const ConstructorsStandings = () => {
               type="submit"
               value="Submit Round"
               style={{
+                width: "8rem",
                 marginTop: "10px",
-                padding: "10px",
+                padding: "5px",
                 cursor: "pointer",
                 fontSize: "12px",
-                color: "white",
+                color: "rgba(206,147,9,0.9)",
                 border: "solid 2px black",
-                backgroundColor: "black",
+                backgroundColor: "black ",
+                backdropFilter:"blur(10px)",
               }}
               onClick={handleSubmitRound}
             />
@@ -187,14 +191,7 @@ const ConstructorsStandings = () => {
           className="standingsContainer"
           style={{ justifyContent: "center" }}
         >
-          <img
-            src={require("./Assets/loading.png")}
-            style={{
-              backgroundColor: "transparent",
-              height: "100px",
-              width: "100px",
-            }}
-          />
+          <div className='spinner'></div>
         </div>
       )}
     </>
