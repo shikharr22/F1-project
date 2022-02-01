@@ -1,39 +1,20 @@
 import React, { useState } from "react";
 import "./App.css";
-import CurrRace from "./CurrRace.js";
-import PrevRace from "./PrevRace.js";
-import UpcomingRace from "./UpcomingRace.js";
-import NavigationRace from "./NavigationRace.js";
-import NavigationTabs from "./NavigationTabs";
-import DriverStandings from "./DriverStandings";
-import ConstructorsStandings from "./ConstructorsStandings";
-
+import {Route,BrowserRouter as Router, Switch, Routes} from 'react-router-dom';
+import TrackLocator from "./TrackLocator";
+import Home from "./Home.js";
 
 const App = () => {
   console.log("App Render");
 
   return (
     <>
-      <div id="container">
-        <div id="homeScreenSection">
-          <div>
-            <PrevRace />
-            <CurrRace />
-            <UpcomingRace />
-          </div>
-          <NavigationRace />
-          <NavigationTabs />
-        </div>
-        <div id="standings">
-          <div id="driversStandings">
-            <DriverStandings />
-          </div>
-          <div id="constructorsStandings">
-            <ConstructorsStandings />
-          </div>
-        </div>
-        <div id="news"></div>
-      </div>
+    <Router>
+      <Routes>
+      <Route exact path='/' element={<Home/>} />
+      <Route exact path='/TrackLocator'  element={<TrackLocator/>}/>
+      </Routes>
+      </Router>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { Link } from "react-router-dom";
 
 const NavigationTabs = () => {
   const [flag1, setFlag1] = useState(1);
@@ -57,12 +58,20 @@ const NavigationTabs = () => {
           </a>
         </div>
         <div className="tabs">
-          <img
-            style={{ width: "90%", height: "100%" }}
-            src={require(`./Assets/trackLocator${flag4}.png`)}
+         
+          <a
+            href="/TrackLocator"
+            target="_blank"
+            style={{ backgroundColor: "transparent" }}
             onMouseOver={() => setFlag4(2)}
             onMouseOut={() => setFlag4(1)}
-          />
+          >
+            <img
+              style={{ width: "90%", height: "100%" }}
+              src={require(`./Assets/trackLocator${flag4}.png`)}
+            />
+          </a>
+        
         </div>
       </div>
     </>
