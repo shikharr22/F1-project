@@ -138,10 +138,11 @@
   width: 100vw;
   height: 100vh;
   background-color: black;
+  
 }
 
 #driversStandings {
-  height: 100%;
+  height: auto;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -179,6 +180,7 @@
     #720115,
     #940007
   );
+  overflow:auto;
 }
 
 .standingsContainer2 {

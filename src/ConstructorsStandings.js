@@ -24,25 +24,21 @@ const ConstructorsStandings = () => {
 
   const handleSubmitRound = (e) => {
     setSubmitRound(inputRound);
-  
   };
-
 
   useEffect(() => {
     getDataYear();
   }, [submitYear]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getDataRound();
-  },[submitRound])
-
+  }, [submitRound]);
 
   useEffect(() => {
     getDataYear();
   }, []);
 
-
-  const getDataYear= () => {
+  const getDataYear = () => {
     const url = `//ergast.com/api/f1/${submitYear}/constructorStandings.json`;
     axios(url)
       .then((response) => {
@@ -51,8 +47,12 @@ const ConstructorsStandings = () => {
             response.data.MRData.StandingsTable.StandingsLists[0]
               .ConstructorStandings
           );
-          setTotalRounds(response.data.MRData.StandingsTable.StandingsLists[0].round);
-          console.log(response.data.MRData.StandingsTable.StandingsLists[0].round);
+          setTotalRounds(
+            response.data.MRData.StandingsTable.StandingsLists[0].round
+          );
+          console.log(
+            response.data.MRData.StandingsTable.StandingsLists[0]
+          );
         }
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ const ConstructorsStandings = () => {
       });
   };
 
-  const getDataRound= () => {
+  const getDataRound = () => {
     const url = `//ergast.com/api/f1/${submitYear}/${submitRound}/constructorStandings.json`;
     axios(url)
       .then((response) => {
@@ -69,7 +69,6 @@ const ConstructorsStandings = () => {
             response.data.MRData.StandingsTable.StandingsLists[0]
               .ConstructorStandings
           );
-         
         }
       })
       .catch((error) => {
@@ -81,46 +80,21 @@ const ConstructorsStandings = () => {
     <>
       {cStandings[0] ? (
         <div className="standingsContainer">
-           <div style={{ display:'flex',flexDirection:'column',justifyContent:'center', margin: "20px", backgroundColor: "transparent" }}>
-           <div style={{display:'flex',gap:'1rem'}}><input
-              id="year"
-              type="text"
-              style={{
-                marginRight: "10px",
-                fontSize: "12px",
-                color: "white",
-                borderTop: "none",
-                borderLeft: "none",
-                borderRight: "none",
-                borderBottom: "solid 2px black",
-                backgroundColor: "transparent",
-              }}
-              placeholder={`${submitYear} (between  1958 to 2021)`}
-              onChange={handleInputYear}
-            />
-            <input
-              id="yearButton"
-              type="submit"
-              value="Submit Year"
-              style={{
-                width: "8rem",
-                  marginTop: "10px",
-                  padding: "5px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  color: "rgba(206,147,9,0.9)",
-                  border: "solid 2px black",
-                  backgroundColor: "black ",
-                  backdropFilter:"blur(10px)",
-              }}
-              onClick={handleSubmitYear}
-            /></div>
-            <div style={{display:'flex',gap:'1rem'}}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              margin: "20px",
+              backgroundColor: "transparent",
+            }}
+          >
+            <div style={{ display: "flex", gap: "1rem" }}>
               <input
-              id="round"
-              type="text"
-              style={{
-                marginRight: "10px",
+                id="year"
+                type="text"
+                style={{
+                  marginRight: "10px",
                   fontSize: "12px",
                   color: "white",
                   borderTop: "none",
@@ -128,70 +102,106 @@ const ConstructorsStandings = () => {
                   borderRight: "none",
                   borderBottom: "solid 2px black",
                   backgroundColor: "transparent",
-              }}
-              placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
-              onChange={handleInputRound}
-            />
+                }}
+                placeholder={`${submitYear} (between  1958 to 2021)`}
+                onChange={handleInputYear}
+              />
+              <input
+                id="yearButton"
+                type="submit"
+                value="Submit Year"
+                style={{
+                  width: "8rem",
+                  marginTop: "10px",
+                  padding: "5px",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  color: "rgba(206,147,9,0.9)",
+                  border: "solid 2px black",
+                  backgroundColor: "black ",
+                  backdropFilter: "blur(10px)",
+                }}
+                onClick={handleSubmitYear}
+              />
+            </div>
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <input
+                id="round"
+                type="text"
+                style={{
+                  marginRight: "10px",
+                  fontSize: "12px",
+                  color: "white",
+                  borderTop: "none",
+                  borderLeft: "none",
+                  borderRight: "none",
+                  borderBottom: "solid 2px black",
+                  backgroundColor: "transparent",
+                }}
+                placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
+                onChange={handleInputRound}
+              />
 
-             <input
-             id="roundButton"
-              type="submit"
-              value="Submit Round"
-              style={{
-                width: "8rem",
-                marginTop: "10px",
-                padding: "5px",
-                cursor: "pointer",
-                fontSize: "12px",
-                color: "rgba(206,147,9,0.9)",
-                border: "solid 2px black",
-                backgroundColor: "black ",
-                backdropFilter:"blur(10px)",
-              }}
-              onClick={handleSubmitRound}
-            />
+              <input
+                id="roundButton"
+                type="submit"
+                value="Submit Round"
+                style={{
+                  width: "8rem",
+                  marginTop: "10px",
+                  padding: "5px",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  color: "rgba(206,147,9,0.9)",
+                  border: "solid 2px black",
+                  backgroundColor: "black ",
+                  backdropFilter: "blur(10px)",
+                }}
+                onClick={handleSubmitRound}
+              />
+            </div>
           </div>
-          </div>
-          {(submitYear>=1958 && submitYear<=2022)?
-          <div className="standingsContainer2">
-          <p id="standingsTitle"> <img src={require('./Assets/f1Logo.png')} style={{backgroundColor:'transparent',height:'50px',width:'50px'}}/>Constructors Standings {submitYear}</p>
-          <p className="constructorsStandingsItems">
-            <span style={{ backgroundColor: "transparent" }}>1</span>
-            <span style={{ backgroundColor: "transparent" }}> {cStandings[0].Constructor.name}</span>{" "}
-            <span style={{ backgroundColor: "transparent" }}>{cStandings[0].points}</span>
-          </p>
-
-          <p className="constructorsStandingsItems">
-            <span style={{ backgroundColor: "transparent" }}>2</span>
-            <span style={{ backgroundColor: "transparent" }}> {cStandings[1].Constructor.name}</span>{" "}
-            <span style={{ backgroundColor: "transparent" }}>{cStandings[1].points}</span>
-          </p>
-
-          <p className="constructorsStandingsItems">
-            <span style={{ backgroundColor: "transparent" }}>3</span>
-            <span style={{ backgroundColor: "transparent" }}> {cStandings[2].Constructor.name}</span>{" "}
-            <span style={{ backgroundColor: "transparent" }}>{cStandings[2].points}</span>
-          </p>
-
-          <p className="constructorsStandingsItems">
-            <span style={{ backgroundColor: "transparent" }}>4</span>
-            <span style={{ backgroundColor: "transparent" }}> {cStandings[3].Constructor.name}</span>{" "}
-            <span style={{ backgroundColor: "transparent" }}>{cStandings[3].points}</span>
-          </p>
-
-          <p className="constructorsStandingsItems">
-            <span style={{ backgroundColor: "transparent" }}>5</span>
-            <span style={{ backgroundColor: "transparent" }}> {cStandings[4].Constructor.name}</span>{" "}
-            <span style={{ backgroundColor: "transparent" }}>{cStandings[4].points}</span>
-          </p>
-        </div>:<p className="driverStandingsItems">Data only available from 1958 to 2021</p>}
+          <ul className="standingsContainer2">
+              <p id="standingsTitle">
+                {" "}
+                <img
+                  src={require("./Assets/f1Logo.png")}
+                  style={{
+                    backgroundColor: "transparent",
+                    height: "50px",
+                    width: "50px",
+                  }}
+                />
+                Constructors Standings {submitYear}
+              </p>
+            
+          {submitYear >= 1958 && submitYear <= 2022 ? (
+            cStandings.map((constructor)=>{
+              return (<li className="constructorsStandingsItems">
+              <span style={{ backgroundColor: "transparent" }}>{constructor.position}</span>
+              <span style={{ backgroundColor: "transparent" }}>
+                {constructor.Constructor.name}
+              </span>
+              <span style={{ backgroundColor: "transparent" }}>
+                {constructor.points}
+              </span>
+            </li>);
+            })
+           
+             
+          ) : (
+            <p className="driverStandingsItems">
+              Data only available from 1958 to 2021
+            </p>
+          )}
+        </ul>
         </div>
       ) : (
         <div
           className="standingsContainer"
           style={{ justifyContent: "center" }}
         >
-          <div className='spinner'></div>
+          <div className="spinner"></div>
         </div>
       )}
     </>

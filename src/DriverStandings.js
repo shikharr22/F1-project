@@ -160,9 +160,8 @@ const DriverStandings = () => {
               />
             </div>
           </div>
-          {submitYear >= 1950 && submitYear <= 2022 ? (
-            <div className="standingsContainer2">
-              <p id="standingsTitle">
+          <ul className="standingsContainer2">
+          <p id="standingsTitle">
                 {" "}
                 <img
                   src={require("./Assets/f1Logo.png")}
@@ -174,62 +173,26 @@ const DriverStandings = () => {
                 />
                 Drivers Standings {submitYear}
               </p>
-              <p className="driverStandingsItems">
-                <span style={{ backgroundColor: "transparent" }}>1</span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[0].Driver.givenName}{" "}
-                  {dStandings[0].Driver.familyName}
-                </span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[0].points}
-                </span>
-              </p>
-              <p className="driverStandingsItems">
-                <span style={{ backgroundColor: "transparent" }}>2</span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[1].Driver.givenName}{" "}
-                  {dStandings[1].Driver.familyName}
-                </span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[1].points}
-                </span>
-              </p>
-              <p className="driverStandingsItems">
-                <span style={{ backgroundColor: "transparent" }}>3</span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[2].Driver.givenName}{" "}
-                  {dStandings[2].Driver.familyName}
-                </span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[2].points}
-                </span>
-              </p>
-              <p className="driverStandingsItems">
-                <span style={{ backgroundColor: "transparent" }}>4</span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[3].Driver.givenName}{" "}
-                  {dStandings[3].Driver.familyName}
-                </span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[3].points}
-                </span>
-              </p>
-              <p className="driverStandingsItems">
-                <span style={{ backgroundColor: "transparent" }}>5</span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[4].Driver.givenName}{" "}
-                  {dStandings[4].Driver.familyName}
-                </span>
-                <span style={{ backgroundColor: "transparent" }}>
-                  {dStandings[4].points}
-                </span>
-              </p>
-            </div>
+          {submitYear >= 1950 && submitYear <= 2022 ? (
+           dStandings.map((driver)=>{
+             return (<li className="driverStandingsItems">
+             <span style={{ backgroundColor: "transparent" }}>{driver.position}</span>
+             <span style={{ backgroundColor: "transparent" }}>
+               {driver.Driver.givenName}{" "}
+               {driver.Driver.familyName}
+             </span>
+             <span style={{ backgroundColor: "transparent" }}>
+               {driver.points}
+             </span>
+           </li>);
+           })
+          
           ) : (
             <p className="driverStandingsItems">
               Data only available from 1950 to 2021
             </p>
           )}
+          </ul>
         </div>
       ) : (
         <div
