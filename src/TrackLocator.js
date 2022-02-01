@@ -39,7 +39,7 @@ const TrackLocator = () => {
   }, []);
 
   const getData = () => {
-    let url = `http://ergast.com/api/f1/${submitYear}/circuits.json`;
+    let url = `//ergast.com/api/f1/${submitYear}/circuits.json`;
     axios
       .get(url)
       .then((response) => {
