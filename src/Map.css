@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 15px;
+  font-size: 12px;
 }
 #map {
   position: absolute;
@@ -16,7 +16,7 @@
   left:0px;
   width: 100vw;
   height: 100vh;
-  z-index: 10000;
+  z-index: 100000;
   background-color: black;
   overflow:hidden;
  
@@ -61,58 +61,85 @@
   font-size: 0.7rem;
   cursor: pointer;
   background: #edcb53;
-  background: -webkit-linear-gradient(124deg, #edcb53 0%, #ffa20f 100%);
+  background: -webkit-linear-gradient(124deg, #63615d 0%, #ffa20f 100%);
   background: linear-gradient(124deg, #edcb53 0%, #ffa20f 100%);
+}
+#trackName
+{
+  position: absolute;
+  top:2vh;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background-color: black;
+  font-size: 1.5rem;
+  z-index: 1000;
+  padding:10px;
+  color:#edcb53;
+}
+#mapQualiResults{
+  position:absolute;
+  top:12%;
+  left:1%;
+  width:35vw;
+  height:20vw;
+  z-index: 1000;
+  color:white;
+  list-style: none;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding:10px;
+  cursor: pointer;
+  background-color: transparent;
+ 
+}
+
+
+.mapQualiResultsItem
+{
+  display: flex;
+  font-family:'Secular One';
+  text-decoration:none;
+  margin-top:20px;
+  background-color: #A50021;
+  padding:10px;
+  font-size: 0.2rem;
+  
 }
 
 #mapRaceResults
 {
   position:absolute;
   top:55%;
-  left:2%;
-  width:24vw;
+  left:1%;
+  width:35vw;
   height:20vw;
   z-index: 1000;
-  background-color: white;
+  background-color: transparent;
   list-style: none;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
   padding:10px;
+  cursor: pointer;
   
 
 }
 
 .mapRaceResultsItem
 {
+  display: flex;
   font-family:'Secular One';
-  text-decoration: none;
+  text-decoration:none;
   margin-top:20px;
-}
-
-#mapQualiResults{
-  position:absolute;
-  top:12%;
-  left:2%;
-  width:24vw;
-  height:20vw;
-  z-index: 1000;
-  background-color: white;
-  list-style: none;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
+  background-color: #A50021;
+  color:white;
   padding:10px;
-}
-
-
-.mapQualiResultsItem
-{
-  font-family:'Secular One';
-  text-decoration: none;
-  margin-top:20px;
+  font-size: 0.2rem;
   
 }
+
+
 /* Animations */
 
 .spinner {

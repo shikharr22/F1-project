@@ -14,20 +14,20 @@ import L, { map } from "leaflet";
 
 const newIcon = new L.icon({
   iconUrl: require("./Assets/f1Logo.png"),
-  iconSize: [30, 30],
+  iconSize: [50, 50],
 });
-
-
 
 const TrackLocator = () => {
   const [circuitData, setCircuitData] = useState([]);
   const [currLat, setCurrLat] = useState(0);
+  const [currName, setCurrName] = useState("");
   const [currLong, setCurrLong] = useState(0);
   const [currCircuitId, setCurrCircuitId] = useState("");
   const [inputYear, setInputYear] = useState(2021);
   const [submitYear, setSubmitYear] = useState(2021);
   const [raceResultsData, setRaceResultsData] = useState([]);
   const [qualiResultsData, setQualiResultsData] = useState([]);
+  const [raceToggle,setRaceToggle]=useState('none');
 
   useEffect(() => {
     getDataCircuit();
@@ -37,8 +37,7 @@ const TrackLocator = () => {
     getDataRaceResults();
     getDataQualiResults();
     DisplayMap();
-    
-  }, [currLat, currLong,submitYear]);
+  }, [currLat, currLong, submitYear]);
 
   useEffect(() => {
     getDataCircuit();
@@ -65,7 +64,7 @@ const TrackLocator = () => {
           setQualiResultsData(
             response.data.MRData.RaceTable.Races[0].QualifyingResults
           );
-          //console.log( response.data.MRData.RaceTable.Races[0].QualifyingResults);
+          console.log( response.data.MRData.RaceTable.Races[0].QualifyingResults);
         }
       })
       .catch((error) => console.log(error));
@@ -84,8 +83,6 @@ const TrackLocator = () => {
       .catch((error) => console.log(error));
   };
 
-  
-
   const handleClose = () => {
     document.getElementById("trackGrid").style.display = "none";
     document.getElementById("map").style.display = "";
@@ -100,9 +97,9 @@ const TrackLocator = () => {
     setCurrLat(lat);
     setCurrLong(long);
     setCurrCircuitId(circuitId);
+    setCurrName(name);
     document.getElementById("trackGrid").style.display = "none";
     document.getElementById("map").style.display = "";
-    
   };
   const handleInputYear = (e) => {
     setInputYear(e.target.value);
@@ -120,22 +117,51 @@ const TrackLocator = () => {
       >
         <TileLayer
           attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-          url="https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=QkED1iePDvCcom4eQXlU"
+          url="https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP"
         />
-
         <Marker position={[currLat, currLong]} icon={newIcon}>
           <Popup>Track</Popup>
         </Marker>
-           <ul id="mapQualiResults">
-          <p>Qualification Results {submitYear}</p>
-          {qualiResultsData && submitYear>=2004 ? (
+        <div id="trackName">{currName}</div>
+        <span
+          style={{
+            display: "flex",
+            gap: "1rem",
+            position: "absolute",
+            top: "12%",
+            left: "1%",
+            zIndex: 10000,
+            color: "#edcb53",
+            backgroundColor: "transparent",
+          }}
+        >
+          <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Quali Results {submitYear}</p>
+        
+          <img
+            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            src={require('./Assets/expand.png')}
+            onClick={() => {
+              document.getElementById("mapQualiResults").style.display = "";
+            }}
+          />
+           <img
+            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            src={require('./Assets/minimise.png')}
+            onClick={() => {
+              document.getElementById("mapQualiResults").style.display = "none";
+            }}
+          />
+          
+        </span>
+        <ul id="mapQualiResults" style={{display:raceToggle}}>
+          {qualiResultsData && submitYear >= 2004 ? (
             qualiResultsData.slice(0, 3).map((element) => {
               return (
-                <li  key={element.position} className="mapQualiResultsItem">
+                <li key={element.position} className="mapQualiResultsItem">
                   {" "}
-                  {element.position} {element.Driver.givenName}{" "}
-                  {element.Driver.familyName}{" "}
-                  {element.Q1}min {" "} {element.Q2}min {" "} {element.Q3}min
+                  <span style={{marginRight:'10px'}}>{element.position}</span> <span style={{marginRight:'5px'}}>{element.Driver.givenName}</span>
+                  <span style={{marginRight:'10px'}}>{element.Driver.familyName}</span> <span style={{marginRight:'10px',color:'#edcb53'}}>{element.Q1} min</span> <span style={{marginRight:'10px',color:'#edcb53'}}>{(element.Q2)?`${element.Q2} min`:<p>No Data</p>}</span>
+                  <span style={{marginRight:'10px',color:'#edcb53'}}>{(element.Q3)?`${element.Q3} min`:<p>No data</p>} </span>
                 </li>
               );
             })
@@ -143,22 +169,43 @@ const TrackLocator = () => {
             <div className="spinner"></div>
           )}
         </ul>
-        
-
-        <ul id="mapRaceResults">
-          <p>Race Results {submitYear}</p>
-          {raceResultsData  && submitYear>=2004? (
+        <span
+          style={{
+            display: "flex",
+            gap: "1rem",
+            position: "absolute",
+            top: "55%",
+            left: "1%",
+            zIndex: 10000,
+            color: "#edcb53",
+            backgroundColor: "transparent",
+          }}
+        >
+          <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Race Results {submitYear}</p>
+          <img
+            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            src={require('./Assets/expand.png')}
+            onClick={() => {
+              document.getElementById("mapRaceResults").style.display = "";
+            }}
+          />
+           <img
+            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            src={require('./Assets/minimise.png')}
+            onClick={() => {
+              document.getElementById("mapRaceResults").style.display = "none";
+            }}
+          />
+        </span>
+        <ul id="mapRaceResults" style={{display:raceToggle}}>
+          {raceResultsData && submitYear >= 2004 ? (
             raceResultsData.slice(0, 3).map((element) => {
               return (
-                <li  key={element.position} className="mapRaceResultsItem">
-                  {" "}
-                  {element.position} {element.Driver.givenName}{" "}
-                  {element.Driver.familyName}{" "}
-               
-                  {element.Time.time}min   {" "}
-                  {element.laps} {" "}
-                  {element.grid}starting grid
-
+                <li key={element.position} className="mapRaceResultsItem">
+                  
+                  <span style={{marginRight:'10px'}}>{element.position}</span> <span style={{marginRight:'10px'}}>{element.Driver.givenName}</span>
+                  <span style={{marginRight:'10px'}}>{element.Driver.familyName}</span>  <span style={{marginRight:'10px',color:'#edcb53'}}>{element.Time.time} min</span>
+                   <span style={{marginRight:'10px',color:'#edcb53'}}>Laps : {element.laps}</span> <span style={{marginRight:'10px',color:'#edcb53'}}> Started at:  {element.grid}</span>
                 </li>
               );
             })
@@ -172,9 +219,22 @@ const TrackLocator = () => {
 
   return (
     <>
-    <div style={{position:'absolute',top:'2%',left:'5%', width:'20px',height:'20px',zIndex:100000}}>
-      <p><a  style={{color:'white',fontSize:'1rem'}} href='/'>Home</a></p>
-    </div>
+      <div
+        style={{
+          position: "absolute",
+          top: "2%",
+          left: "5%",
+          width: "20px",
+          height: "20px",
+          zIndex: 100000,
+        }}
+      >
+        <p>
+          <a style={{ color: "#edcb53", fontSize: "1.5rem" }} href="/">
+            Home
+          </a>
+        </p>
+      </div>
       <div id="trackGrid">
         <p style={{ color: "white", textAlign: "center", fontSize: "1.5rem" }}>
           F1 Tracks {submitYear}
@@ -199,7 +259,7 @@ const TrackLocator = () => {
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "solid 2px black",
+                borderBottom: "solid 2px white",
                 backgroundColor: "transparent",
               }}
               placeholder={`${submitYear} (between  1958 to 2021)`}
