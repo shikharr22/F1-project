@@ -65,6 +65,54 @@
   background: linear-gradient(124deg, #edcb53 0%, #ffa20f 100%);
 }
 
+#mapRaceResults
+{
+  position:absolute;
+  top:55%;
+  left:2%;
+  width:24vw;
+  height:20vw;
+  z-index: 1000;
+  background-color: white;
+  list-style: none;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding:10px;
+  
+
+}
+
+.mapRaceResultsItem
+{
+  font-family:'Secular One';
+  text-decoration: none;
+  margin-top:20px;
+}
+
+#mapQualiResults{
+  position:absolute;
+  top:12%;
+  left:2%;
+  width:24vw;
+  height:20vw;
+  z-index: 1000;
+  background-color: white;
+  list-style: none;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding:10px;
+}
+
+
+.mapQualiResultsItem
+{
+  font-family:'Secular One';
+  text-decoration: none;
+  margin-top:20px;
+  
+}
 /* Animations */
 
 .spinner {
