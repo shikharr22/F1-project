@@ -28,6 +28,7 @@ const TrackLocator = () => {
   const [raceResultsData, setRaceResultsData] = useState([]);
   const [qualiResultsData, setQualiResultsData] = useState([]);
   const [raceToggle,setRaceToggle]=useState('none');
+  const [mapView,setMapView]=useState("https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP");
 
   useEffect(() => {
     getDataCircuit();
@@ -37,7 +38,7 @@ const TrackLocator = () => {
     getDataRaceResults();
     getDataQualiResults();
     DisplayMap();
-  }, [currLat, currLong, submitYear]);
+  }, [currLat, currLong, submitYear,mapView]);
 
   useEffect(() => {
     getDataCircuit();
@@ -117,7 +118,7 @@ const TrackLocator = () => {
       >
         <TileLayer
           attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-          url="https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP"
+          url={mapView}
         />
         <Marker position={[currLat, currLong]} icon={newIcon}>
           <Popup>Track</Popup>
@@ -154,7 +155,7 @@ const TrackLocator = () => {
           
         </span>
         <ul id="mapQualiResults" style={{display:raceToggle}}>
-          {qualiResultsData && submitYear >= 2004 ? (
+          {qualiResultsData && submitYear >= 2004  && submitYear<=2021? (
             qualiResultsData.slice(0, 3).map((element) => {
               return (
                 <li key={element.position} className="mapQualiResultsItem">
@@ -198,7 +199,7 @@ const TrackLocator = () => {
           />
         </span>
         <ul id="mapRaceResults" style={{display:raceToggle}}>
-          {raceResultsData && submitYear >= 2004 ? (
+          {raceResultsData && submitYear >= 2004  && submitYear<=2021? (
             raceResultsData.slice(0, 3).map((element) => {
               return (
                 <li key={element.position} className="mapRaceResultsItem">
@@ -232,6 +233,44 @@ const TrackLocator = () => {
         <p>
           <a style={{ color: "#edcb53", fontSize: "1.5rem" }} href="/">
             Home
+          </a>
+        </p>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: "5%",
+          right: "15%",
+          width: "20px",
+          height: "20px",
+          zIndex: 1000,
+          cursor:'pointer',
+        }}
+      >
+        <p>
+          <a style={{ color: "black", fontSize: "1.5rem" }} onClick={()=>{
+            setMapView("https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=hs3S6M6cLXWe5u0OssHP");
+          }}>
+            Satellite 
+          </a>
+        </p>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: "15%",
+          right: "15%",
+          width: "20px",
+          height: "20px",
+          zIndex: 1000,
+          cursor:'pointer',
+        }}
+      >
+        <p>
+          <a style={{ color: "black",fontSize: "1.5rem" }} onClick={()=>{
+            setMapView("https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP");
+          }}>
+            Street 
           </a>
         </p>
       </div>

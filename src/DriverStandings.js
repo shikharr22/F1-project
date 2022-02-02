@@ -102,7 +102,7 @@ const DriverStandings = () => {
                   borderBottom: "solid 2px black",
                   backgroundColor: "transparent",
                 }}
-                placeholder={`${submitYear} (between  1958 to 2021)`}
+                placeholder={`${submitYear} (between  1958 to 2022)`}
                 onChange={handleInputYear}
               />
               <input
@@ -110,7 +110,7 @@ const DriverStandings = () => {
                 type="submit"
                 value="Submit Year"
                 style={{
-                  width: "8rem",
+                  width: "9rem",
                   marginTop: "10px",
                   padding: "5px",
                   cursor: "pointer",
@@ -146,7 +146,7 @@ const DriverStandings = () => {
                 type="submit"
                 value="Submit Round"
                 style={{
-                  width: "8rem",
+                  width: "rem",
                   marginTop: "10px",
                   padding: "5px",
                   cursor: "pointer",
