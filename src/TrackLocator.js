@@ -72,7 +72,7 @@ const TrackLocator = () => {
           setQualiResultsData(
             response.data.MRData.RaceTable.Races[0].QualifyingResults
           );
-          //console.log( response.data.MRData.RaceTable.Races[0].QualifyingResults);
+          console.log( response.data.MRData.RaceTable.Races[0].QualifyingResults);
         }
       })
       .catch((error) => console.log(error));
@@ -85,7 +85,7 @@ const TrackLocator = () => {
       .then((response) => {
         if (response.data.MRData) {
           setRaceResultsData(response.data.MRData.RaceTable.Races[0].Results);
-          //console.log(response.data.MRData.RaceTable.Races[0].Results);
+          console.log(response.data.MRData.RaceTable.Races[0].Results);
         }
       })
       .catch((error) => console.log(error));
@@ -135,6 +135,12 @@ const TrackLocator = () => {
          temp.push({'code':driver.Driver.code,'grid':Number(driver.grid)});
       })
       temp.sort(compare);
+      if(temp[0].grid==0)
+      {
+        let d=temp[0];
+        temp=temp.slice(1,temp.length);  
+        temp.push(d);
+      }
       setStartingGrid(temp);
     }
 
