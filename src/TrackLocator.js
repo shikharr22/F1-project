@@ -27,6 +27,7 @@ const TrackLocator = () => {
   const [submitYear, setSubmitYear] = useState(2021);
   const [raceResultsData, setRaceResultsData] = useState([]);
   const [qualiResultsData, setQualiResultsData] = useState([]);
+  const [startingGrid,setStartingGrid]=useState([]);
   const [raceToggle,setRaceToggle]=useState('none');
   const [mapView,setMapView]=useState("https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP");
 
@@ -34,10 +35,16 @@ const TrackLocator = () => {
     getDataCircuit();
   }, [submitYear]);
 
+   useEffect(()=>{
+    updateStartingGrid();
+    console.log(startingGrid);
+   },[raceResultsData])
+
   useEffect(() => {
     getDataRaceResults();
     getDataQualiResults();
     DisplayMap();
+    
   }, [currLat, currLong, submitYear,mapView]);
 
   useEffect(() => {
@@ -65,7 +72,7 @@ const TrackLocator = () => {
           setQualiResultsData(
             response.data.MRData.RaceTable.Races[0].QualifyingResults
           );
-          console.log( response.data.MRData.RaceTable.Races[0].QualifyingResults);
+          //console.log( response.data.MRData.RaceTable.Races[0].QualifyingResults);
         }
       })
       .catch((error) => console.log(error));
@@ -108,6 +115,30 @@ const TrackLocator = () => {
   const handleSubmitYear = (e) => {
     setSubmitYear(inputYear);
   };
+
+  const compare=( a, b )=>{
+    if ( a.grid < b.grid){
+      return -1;
+    }
+    if ( a.grid> b.grid){
+      return 1;
+    }
+    return 0;
+  }
+
+  const updateStartingGrid=()=>{
+    let temp=[];
+    if(raceResultsData)
+    {
+      
+      raceResultsData.map((driver)=>{
+         temp.push({'code':driver.Driver.code,'grid':Number(driver.grid)});
+      })
+      temp.sort(compare);
+      setStartingGrid(temp);
+    }
+
+  }
 
   const DisplayMap = () => {
     return (
@@ -175,8 +206,8 @@ const TrackLocator = () => {
             display: "flex",
             gap: "1rem",
             position: "absolute",
-            top: "55%",
-            left: "1%",
+            top: "12%",
+            left: "40%",
             zIndex: 10000,
             color: "#edcb53",
             backgroundColor: "transparent",
@@ -214,6 +245,43 @@ const TrackLocator = () => {
             <div className="spinner"></div>
           )}
         </ul>
+        <span
+          style={{
+            display: "flex",
+            gap: "1rem",
+            position: "absolute",
+            top: "12%",
+            left: "79%",
+            zIndex: 10000,
+            color: "#edcb53",
+            backgroundColor: "transparent",
+          }}
+        >
+          <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Starting Grid {submitYear}</p>
+        
+          <img
+            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            src={require('./Assets/expand.png')}
+            onClick={() => {
+              document.getElementById("startingGrid").style.display = "";
+            }}
+          />
+           <img
+            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            src={require('./Assets/minimise.png')}
+            onClick={() => {
+              document.getElementById("startingGrid").style.display = "none";
+            }}
+          />
+        </span>
+        <ul id="startingGrid" style={{display:raceToggle}}>
+         {startingGrid?startingGrid.map((element,index)=>{
+           return (
+             <li style={{marginLeft:(index%2==0)?'0px':'40px'}} className='startingGridItem'>{element.code}</li>
+              
+           );
+         }):<div className="spinner"></div>}
+        </ul>
       </MapContainer>
     );
   };
@@ -227,7 +295,7 @@ const TrackLocator = () => {
           left: "5%",
           width: "20px",
           height: "20px",
-          zIndex: 100000,
+          zIndex: 1000000 ,
         }}
       >
         <p>

@@ -100,7 +100,7 @@
   display: flex;
   font-family:'Secular One';
   text-decoration:none;
-  margin-top:20px;
+  margin-top:5px;
   background-color: #A50021;
   padding:10px;
   font-size: 0.2rem;
@@ -110,8 +110,8 @@
 #mapRaceResults
 {
   position:absolute;
-  top:55%;
-  left:1%;
+  top:12%;
+  left:40%;
   width:35vw;
   height:20vw;
   z-index: 1000;
@@ -131,12 +131,39 @@
   display: flex;
   font-family:'Secular One';
   text-decoration:none;
-  margin-top:20px;
+  margin-top:5px;
   background-color: #A50021;
   color:white;
   padding:10px;
   font-size: 0.2rem;
   
+}
+
+#startingGrid
+{
+  position:absolute;
+  top:20%;
+  left:79%;
+  width:auto;
+  height:auto;
+  z-index: 1000;
+  background-color: #A50021;
+  list-style: none; 
+  cursor: pointer;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+.startingGridItem
+{
+  width:auto;
+  color:#edcb53;
+  width:2.2vw;
+  padding:0px 2px 0 2px;
+  border-bottom:white solid 2px;
+  border-left:white solid 2px;
+  border-right:white solid 2px;
 }
 
 

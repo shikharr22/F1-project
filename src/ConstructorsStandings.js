@@ -50,9 +50,9 @@ const ConstructorsStandings = () => {
           setTotalRounds(
             response.data.MRData.StandingsTable.StandingsLists[0].round
           );
-          console.log(
-            response.data.MRData.StandingsTable.StandingsLists[0]
-          );
+          // console.log(
+          //   response.data.MRData.StandingsTable.StandingsLists[0]
+          //  );
         }
       })
       .catch((error) => {

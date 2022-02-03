@@ -15,7 +15,7 @@ const PrevRace = () => {
       .then((response) => {
         if (response.data.MRData) {
           setPrevRace(response.data.MRData.RaceTable.Races);
-          console.log(response.data.MRData.RaceTable.Races);
+          //console.log(response.data.MRData.RaceTable.Races);
         }
       })
       .catch((error) => {
