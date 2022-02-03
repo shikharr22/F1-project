@@ -143,24 +143,26 @@
 {
   position:absolute;
   top:20%;
-  left:79%;
+  left:80%;
   width:auto;
   height:auto;
   z-index: 1000;
   background-color: #A50021;
   list-style: none; 
   cursor: pointer;
-  padding: 7px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .startingGridItem
 {
   width:auto;
   color:#edcb53;
-  width:2.2vw;
+  width:3.2vw;
   padding:0px 2px 0 2px;
+  text-align:center;
   border-top:white 2px solid;
   border-right:white solid 2px;
   border-left:white solid 2px;

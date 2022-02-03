@@ -135,7 +135,7 @@ const TrackLocator = () => {
     {
       
       raceResultsData.map((driver)=>{
-         temp.push({'code':driver.Driver.code,'grid':Number(driver.grid)});
+         temp.push({'code':driver.Driver.code,'grid':Number(driver.grid),'name':`${driver.Driver.givenName} ${driver.Driver.familyName}`});
       })
       temp.sort(compare);
       if(temp[0] && temp[0].grid==0)
@@ -286,7 +286,16 @@ const TrackLocator = () => {
         <ul id="startingGrid" style={{display:raceToggle}}>
          {startingGrid?startingGrid.map((element,index)=>{
            return (
-             <li style={{marginLeft:(index%2==0)?'0px':'40px'}} className='startingGridItem'>{element.code?<p>{element.code}</p>:<p>-----</p>}</li>
+             <li  id={index.toString()} onMouseOver={()=>{
+               document.getElementById(index.toString()).innerText=`${element.name}`;
+               document.getElementById(index.toString()).style.fontSize='0.5rem';
+
+             }}
+             onMouseOut={()=>{
+              document.getElementById(index.toString()).innerText=`${element.code}`;
+              document.getElementById(index.toString()).style.fontSize='1rem';
+            }}
+             style={{marginLeft:(index%2==0)?'0px':'60px'}} className='startingGridItem'>{element.code?<p>{element.code}</p>:<p>-----</p>}</li>
               
            );
          }):<div className="spinner"></div>}
