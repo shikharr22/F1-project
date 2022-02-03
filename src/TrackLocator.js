@@ -277,7 +277,7 @@ const TrackLocator = () => {
         <ul id="startingGrid" style={{display:raceToggle}}>
          {startingGrid?startingGrid.map((element,index)=>{
            return (
-             <li style={{marginLeft:(index%2==0)?'0px':'40px'}} className='startingGridItem'>{element.code}</li>
+             <li style={{marginLeft:(index%2==0)?'0px':'40px'}} className='startingGridItem'>{element.code?<p>{element.code}</p>:<p>-----</p>}</li>
               
            );
          }):<div className="spinner"></div>}
@@ -369,7 +369,7 @@ const TrackLocator = () => {
                 borderBottom: "solid 2px white",
                 backgroundColor: "transparent",
               }}
-              placeholder={`${submitYear} (between  1958 to 2021)`}
+              placeholder={`${submitYear} (between  2004 to 2021)`}
               onChange={handleInputYear}
             />
             <input
