@@ -21,6 +21,7 @@ const TrackLocator = () => {
   const [circuitData, setCircuitData] = useState([]);
   const [currLat, setCurrLat] = useState(0);
   const [currName, setCurrName] = useState("");
+  const [currLocality, setCurrLocality] = useState("");
   const [currLong, setCurrLong] = useState(0);
   const [currCircuitId, setCurrCircuitId] = useState("");
   const [inputYear, setInputYear] = useState(2021);
@@ -37,7 +38,7 @@ const TrackLocator = () => {
 
    useEffect(()=>{
     updateStartingGrid();
-    console.log(startingGrid);
+    //console.log(startingGrid);
    },[raceResultsData])
 
   useEffect(() => {
@@ -58,6 +59,7 @@ const TrackLocator = () => {
       .then((response) => {
         if (response.data.MRData) {
           setCircuitData(response.data.MRData.CircuitTable.Circuits);
+          console.log(response.data.MRData.CircuitTable.Circuits);
         }
       })
       .catch((error) => console.log(error));
@@ -101,11 +103,12 @@ const TrackLocator = () => {
     document.getElementById("map").style.display = "none";
   };
 
-  const handleTrackClick = (lat, long, name, circuitId) => {
+  const handleTrackClick = (lat, long, name, circuitId,locality) => {
     setCurrLat(lat);
     setCurrLong(long);
     setCurrCircuitId(circuitId);
     setCurrName(name);
+    setCurrLocality(locality);
     document.getElementById("trackGrid").style.display = "none";
     document.getElementById("map").style.display = "";
   };
@@ -135,7 +138,7 @@ const TrackLocator = () => {
          temp.push({'code':driver.Driver.code,'grid':Number(driver.grid)});
       })
       temp.sort(compare);
-      if(temp[0].grid==0)
+      if(temp[0] && temp[0].grid==0)
       {
         let d=temp[0];
         temp=temp.slice(1,temp.length);  
@@ -160,7 +163,7 @@ const TrackLocator = () => {
         <Marker position={[currLat, currLong]} icon={newIcon}>
           <Popup>Track</Popup>
         </Marker>
-        <div id="trackName">{currName}</div>
+        <div id="trackName">{currName} ,{currLocality}</div>
         <span
           style={{
             display: "flex",
@@ -408,12 +411,13 @@ const TrackLocator = () => {
                       track.Location.lat,
                       track.Location.long,
                       track.circuitName,
-                      track.circuitId
+                      track.circuitId,
+                      track.Location.locality
                     )
                   }
                   className="trackListItem"
                 >
-                  {track.circuitName}
+                  {track.circuitName} 
                 </li>
               );
             })
