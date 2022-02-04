@@ -32,7 +32,7 @@ const App = () => {
             <ConstructorsStandings />
           </div>
         </div>
-        <div id="news"><News/></div>
+        <div id="news"></div>
       </div>
     </>
   );
