@@ -9,6 +9,10 @@ const NavigationRace = () => {
       "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
     document.getElementById("upcomingRace").style =
       "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
+
+    document.getElementById('previous').style.color="#ffd700"
+    document.getElementById('current').style.color="white"
+    document.getElementById('upcoming').style.color="white"
   };
 
   const handleCurr = () => {
@@ -18,6 +22,10 @@ const NavigationRace = () => {
       "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
     document.getElementById("prevRace").style =
       "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
+
+      document.getElementById('previous').style.color="white"
+      document.getElementById('current').style.color="#ffd700"
+      document.getElementById('upcoming').style.color="white"
   };
 
   const handleUpcoming = () => {
@@ -27,32 +35,30 @@ const NavigationRace = () => {
       "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
     document.getElementById("currentRace").style =
       "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
+
+      document.getElementById('previous').style.color="white"
+      document.getElementById('current').style.color="white"
+      document.getElementById('upcoming').style.color="#ffd700"
   };
   return (
     <>
       <div id="navigation">
-        <a href="#" className="navigationItem" onClick={handlePrev}>
-          <img
-            src={require("./Assets/left-arrow.png")}
-            style={{ width: "150px", height: "60px" }}
-          />
+        <a href="#"  id='previous' className="navigationItem" onClick={handlePrev}
+         style={{ backgroundColor: "transparent",fontFamily:'Russo One',color:'white',fontSize:'1.4rem' }}>
+          Previous
         </a>
         <a
           href="#"
           className="navigationItem"
-          style={{ backgroundColor: "transparent" }}
+          id='current'
+          style={{ backgroundColor: "transparent",fontFamily:'Russo One',color:'#ffd700',fontSize:'1.4rem' }}
           onClick={handleCurr}
         >
-          <img
-            src={require("./Assets/current.png")}
-            style={{ width: "150px", height: "60px" }}
-          />
+         Current
         </a>
-        <a href="#" className="navigationItem" onClick={handleUpcoming}>
-          <img
-            src={require("./Assets/right-arrow.png")}
-            style={{ width: "150px", height: "60px" }}
-          />
+        <a  id='upcoming' href="#" className="navigationItem" onClick={handleUpcoming}
+         style={{ backgroundColor: "transparent",fontFamily:'Russo One',color:'white',fontSize:'1.4rem' }}>
+          Upcoming
         </a>
       </div>
     </>
