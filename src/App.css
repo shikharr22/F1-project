@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-size: 15px;
   background-color: transparent;
-  font-family: "Bungee";
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -28,7 +27,7 @@
   width: 100vw;
   height: 100vh;
   background-color: black;
-  background: url("./Assets/homeScreen1.png");
+  background: url("./Assets/homeScreen3.jpg");
   perspective: -110px;
   background-repeat: no-repeat;
   background-position: center;
@@ -142,6 +141,7 @@
   height: 100vh;
   background-color: black;
   
+  
 }
 
 #driversStandings {
@@ -149,7 +149,11 @@
   width: 50%;
   display: flex;
   justify-content: center;
+  align-items: center;
   opacity: 1;
+  padding:10px;
+  border-right: solid white 2px;
+  
 }
 
 #constructorsStandings {
@@ -157,6 +161,7 @@
   width: 50%;
   display: flex;
   justify-content: center;
+  padding:10px;
   opacity: 1;
 }
 
@@ -169,7 +174,7 @@
 .standingsContainer {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   width: 80%;
   height: 90%;
@@ -195,6 +200,7 @@
   height: 100%;
   background-color: transparent;
   overflow:auto;
+  margin-bottom: 30px;
 }
 
 #standingsTitle {
@@ -210,33 +216,34 @@
   border: none;
   font-family: "Secular One";
   text-transform: uppercase;
+  font-family: 'Russo One';
 }
 
 .driverStandingsItems {
   display: flex;
-  justify-content: space-around;
   width: 65%;
-  height: 7%;
+  height: auto;
   align-items: center;
-  color: black;
-  margin: 7px;
-
+  color: #FFD700;
+  margin: 5px;
+  font-family: 'Russo One';
+  font-size:1.7rem;
   border: none;
   text-transform: uppercase;
-  background-color: #dd8f00;
+  background-color: transparent;
 }
 .constructorsStandingsItems {
   display: flex;
-  justify-content: space-around;
   width: 65%;
-  height: 7%;
+  height: auto;
   align-items: center;
-  color: black;
-  margin: 7px;
-
+  color: #FFD700;
+  margin: 5px;
+  font-family: 'Russo One';
+  font-size:1.7rem;
   border: none;
   text-transform: uppercase;
-  background-color: #dd8f00;
+  background-color: transparent;
 }
 
 /* Animations */

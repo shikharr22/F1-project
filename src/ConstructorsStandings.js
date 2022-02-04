@@ -94,6 +94,7 @@ const ConstructorsStandings = () => {
                 id="year"
                 type="text"
                 style={{
+                  width:'12vw',
                   marginRight: "10px",
                   fontSize: "12px",
                   color: "white",
@@ -102,6 +103,7 @@ const ConstructorsStandings = () => {
                   borderRight: "none",
                   borderBottom: "solid 2px black",
                   backgroundColor: "transparent",
+                  fontFamily:'Russo One',
                 }}
                 placeholder={`${submitYear} (between  1958 to 2022)`}
                 onChange={handleInputYear}
@@ -111,7 +113,7 @@ const ConstructorsStandings = () => {
                 type="submit"
                 value="Submit Year"
                 style={{
-                  width: "9rem",
+                  width: "7vw",
                   marginTop: "10px",
                   padding: "5px",
                   cursor: "pointer",
@@ -120,6 +122,7 @@ const ConstructorsStandings = () => {
                   border: "solid 2px black",
                   backgroundColor: "black ",
                   backdropFilter: "blur(10px)",
+                  fontFamily:'Russo One',
                 }}
                 onClick={handleSubmitYear}
               />
@@ -129,6 +132,7 @@ const ConstructorsStandings = () => {
                 id="round"
                 type="text"
                 style={{
+                  width:'12vw',
                   marginRight: "10px",
                   fontSize: "12px",
                   color: "white",
@@ -137,6 +141,7 @@ const ConstructorsStandings = () => {
                   borderRight: "none",
                   borderBottom: "solid 2px black",
                   backgroundColor: "transparent",
+                  fontFamily:'Russo One',
                 }}
                 placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
                 onChange={handleInputRound}
@@ -147,7 +152,7 @@ const ConstructorsStandings = () => {
                 type="submit"
                 value="Submit Round"
                 style={{
-                  width: "9rem",
+                  width: "7vw",
                   marginTop: "10px",
                   padding: "5px",
                   cursor: "pointer",
@@ -156,13 +161,13 @@ const ConstructorsStandings = () => {
                   border: "solid 2px black",
                   backgroundColor: "black ",
                   backdropFilter: "blur(10px)",
+                  fontFamily:'Russo One',
                 }}
                 onClick={handleSubmitRound}
               />
             </div>
           </div>
-          <ul className="standingsContainer2">
-              <p id="standingsTitle">
+          <p id="standingsTitle">
                 {" "}
                 <img
                   src={require("./Assets/f1Logo.png")}
@@ -175,16 +180,53 @@ const ConstructorsStandings = () => {
                 Constructors Standings {submitYear}
               </p>
             
+          <ul className="standingsContainer2">
+             
           {submitYear >= 1958 && submitYear <= 2022 ? (
-            cStandings.map((constructor)=>{
+            cStandings.map((constructor,index)=>{
               return (<li className="constructorsStandingsItems">
-              <span style={{ backgroundColor: "transparent" }}>{constructor.position}</span>
-              <span style={{ backgroundColor: "transparent" }}>
+              <span style={{
+                        color: "white",
+                        textAlign: "center",
+                        backgroundColor: "black",
+                        marginLeft: "40px",
+                        padding: "5px 5px 5px 5px",
+                        border: "solid transparent 2px",
+                        width: "3vw",
+                        height: "5vh",
+                      }}> {
+                        (constructor.position==(index+1).toString() && (index+1==1 || index+1==2 || index+1==3  ))?<img  style={{width:'1.3vw',height:'2.8vh'}} src={require(`./Assets/${index+1}medal.png`)}/>:<p>{constructor.position}</p>}
+        </span>
+              <span  style={{
+                        backgroundColor: "black",
+                        marginLeft: "35px",
+                        width: "17vw",
+                        padding: "7px 7px 7px 7px",
+                      }}>
                 {constructor.Constructor.name}
               </span>
-              <span style={{ backgroundColor: "transparent" }}>
+              <span style={{
+                        textAlign: "center",
+                        backgroundColor: "black",
+                        marginLeft: "20px",
+                        width: "6vw",
+                        height: "4vh",
+                        padding: "5px 5px 5px 5px",
+                      }}>
                 {constructor.points}
               </span>
+              <span
+                      style={{
+                        color: "white",
+                        textAlign: "center",
+                        backgroundColor: "transparent",
+                        width: "2vw",
+                        height: "4vh",
+                        padding: "5px 5px 5px 5px",
+                      }}
+                    >
+                      pts
+                    </span>
             </li>);
             })
            

@@ -93,6 +93,7 @@ const DriverStandings = () => {
                 id="year"
                 type="text"
                 style={{
+                  width:'12vw',
                   marginRight: "10px",
                   fontSize: "12px",
                   color: "white",
@@ -101,6 +102,7 @@ const DriverStandings = () => {
                   borderRight: "none",
                   borderBottom: "solid 2px black",
                   backgroundColor: "transparent",
+                  fontFamily:'Russo One',
                 }}
                 placeholder={`${submitYear} (between  1958 to 2022)`}
                 onChange={handleInputYear}
@@ -110,7 +112,7 @@ const DriverStandings = () => {
                 type="submit"
                 value="Submit Year"
                 style={{
-                  width: "9rem",
+                  width: "7vw",
                   marginTop: "10px",
                   padding: "5px",
                   cursor: "pointer",
@@ -118,7 +120,8 @@ const DriverStandings = () => {
                   color: "rgba(206,147,9,0.9)",
                   border: "solid 2px black",
                   backgroundColor: "black ",
-                  backdropFilter:"blur(10px)",
+                  backdropFilter: "blur(10px)",
+                  fontFamily:'Russo One',
                 }}
                 onClick={handleSubmitYear}
               />
@@ -128,6 +131,7 @@ const DriverStandings = () => {
                 id="round"
                 type="text"
                 style={{
+                  width:'12vw',
                   marginRight: "10px",
                   fontSize: "12px",
                   color: "white",
@@ -136,6 +140,7 @@ const DriverStandings = () => {
                   borderRight: "none",
                   borderBottom: "solid 2px black",
                   backgroundColor: "transparent",
+                  fontFamily:'Russo One',
                 }}
                 placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
                 onChange={handleInputRound}
@@ -146,7 +151,7 @@ const DriverStandings = () => {
                 type="submit"
                 value="Submit Round"
                 style={{
-                  width: "rem",
+                  width: "7vw",
                   marginTop: "10px",
                   padding: "5px",
                   cursor: "pointer",
@@ -154,44 +159,88 @@ const DriverStandings = () => {
                   color: "rgba(206,147,9,0.9)",
                   border: "solid 2px black",
                   backgroundColor: "black ",
-                  backdropFilter:"blur(10px)",
+                  backdropFilter: "blur(10px)",
+                  fontFamily:'Russo One',
                 }}
                 onClick={handleSubmitRound}
               />
             </div>
           </div>
-          <ul className="standingsContainer2">
           <p id="standingsTitle">
-                {" "}
-                <img
-                  src={require("./Assets/f1Logo.png")}
-                  style={{
-                    backgroundColor: "transparent",
-                    height: "50px",
-                    width: "50px",
-                  }}
-                />
-                Drivers Standings {submitYear}
+            {" "}
+            <img
+              src={require("./Assets/f1Logo.png")}
+              style={{
+                backgroundColor: "transparent",
+                height: "50px",
+                width: "50px",
+              }}
+            />
+            Drivers Standings {submitYear}
+          </p>
+          <ul className="standingsContainer2">
+            {submitYear >= 1950 && submitYear <= 2022 ? (
+              dStandings.map((driver, index) => {
+                return (
+                  <li className="driverStandingsItems">
+                    <span
+                      style={{
+                        color: "white",
+                        textAlign: "center",
+                        backgroundColor: "black",
+                        marginLeft: "40px",
+                        padding: "5px 5px 5px 5px",
+                        border: "solid transparent 2px",
+                        width: "3vw",
+                        height: "5vh",
+                      }}
+                    >
+                      {
+                      (driver.position==(index+1).toString() && (index+1==1 || index+1==2 || index+1==3  ))?<img  style={{width:'1.3vw',height:'2.8vh'}} src={require(`./Assets/${index+1}medal.png`)}/>:<p>{driver.position}</p>}
+      
+                    </span>
+                    <span
+                      style={{
+                        backgroundColor: "black",
+                        marginLeft: "35px",
+                        width: "17vw",
+                        padding: "7px 7px 7px 7px",
+                      }}
+                    >
+                      {driver.Driver.givenName} {driver.Driver.familyName}
+                    </span>
+                    <span
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "black",
+                        marginLeft: "20px",
+                        width: "6vw",
+                        height: "4vh",
+                        padding: "5px 5px 5px 5px",
+                      }}
+                    >
+                      {driver.points}
+                    </span>
+                    <span
+                      style={{
+                        color: "white",
+                        textAlign: "center",
+                        backgroundColor: "transparent",
+                        width: "2vw",
+                        height: "4vh",
+                        padding: "5px 5px 5px 5px",
+                      }}
+                    >
+                      pts
+                    </span>
+                  </li>
+                );
+              })
+            ) : (
+              <p className="driverStandingsItems">
+                Data only available from 1950 to 2021
               </p>
-          {submitYear >= 1950 && submitYear <= 2022 ? (
-           dStandings.map((driver)=>{
-             return (<li className="driverStandingsItems">
-             <span style={{ backgroundColor: "transparent" }}>{driver.position}</span>
-             <span style={{ backgroundColor: "transparent" }}>
-               {driver.Driver.givenName}{" "}
-               {driver.Driver.familyName}
-             </span>
-             <span style={{ backgroundColor: "transparent" }}>
-               {driver.points}
-             </span>
-           </li>);
-           })
-          
-          ) : (
-            <p className="driverStandingsItems">
-              Data only available from 1950 to 2021
-            </p>
-          )}
+            )}
           </ul>
         </div>
       ) : (
