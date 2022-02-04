@@ -257,15 +257,14 @@
 
 #news {
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: black;
   overflow:auto;
   border-top: solid white 2px;
-  padding-top: 2vh;
+  padding: 4vh;
   gap:2vh;
 }
 

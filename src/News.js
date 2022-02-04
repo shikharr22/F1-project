@@ -27,17 +27,19 @@ const News = () => {
   const getNews = () => {
     axios
       .get(
-        `//newsapi.org/v2/everything?excludeDomains=reuters.com,bbc.com.uk,9to5mac.com&language=en&q=f1 OR "formula one"&from=${currYear}-${currMonth}-${currDate}&apiKey=771c39d68db1446092fea1cc28a59a88`
+        `//api.mediastack.com/v1/news?access_key=1d84a4089d10d03df6d9d8647c886f18&keywords=f1&languages=en&date=${currYear}-${currMonth}-${currDate}`
       )
       .then((response) => {
         if (response.data) {
-          setNews(response.data.articles);
+          setNews(response.data.data);
+         
         }
       })
       .catch((error) => console.log(error));
   };
   return (
     <>
+     
       <p style={{fontSize:'2rem',fontFamily:'Russo One',color:'white'}}>Latest Action</p>
       <ul style={{ display: "grid", gridTemplateColumns:'repeat(5,18vw)',gridAutoRows:'auto',listStyle: "none" }}>
         {news.length!=0 ? (
@@ -51,25 +53,26 @@ const News = () => {
                 onMouseOut={()=>document.getElementById(index.toString()).style.opacity=0.9}
               >
                   <a  target="_blank" style={{width:'100%',height:'100%',textDecoration:'none',color:"white"}}href={article.url}>
-                  {article.urlToImage ? (
+                   {article.image ? (
                   <img
                     style={{ width: "100%", height: "65%" }}
-                    src={article.urlToImage}
+                    src={article.image}
                   />
                 ) : (
                   <p>NO image</p>
-                )}
+                )} 
                 <span style={{fontSize:'1.1rem',textAlign:'center',marginTop:'1vh',fontFamily:'Quicksand',fontWeight:'bold'}}>
-                {article.title}  
+                 {article.title}   
                 </span>
                 </a>
               </li>
             );
           })
         ) : (
-          <div  style={{position:'relative',top:'50%'}} className="spinner"></div>
-        )}
+          <div className="spinner"></div>
+        )} 
       </ul>
+    
     </>
   );
 };

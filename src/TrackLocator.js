@@ -434,11 +434,6 @@ const TrackLocator = () => {
             <div className="spinner"></div>
           )}
         </ul>
-        <img
-          id="closeButton"
-          src={require("./Assets/close.png")}
-          onClick={handleClose}
-        />
       </div>
       <div id="map">
         <img
