@@ -8,9 +8,13 @@ const News = () => {
   const [currMonth, setCurrMonth] = useState(null);
   const [currYear, setCurrYear] = useState(null);
 
+ useEffect(()=>{
+  getNews();
+ },[currDate,currYear,currMonth])
+
+
   useEffect(() => {
-    handleCurrDate();
-    getNews();
+    handleCurrDate(); 
   }, []);
 
   const handleCurrDate = () => {
@@ -28,7 +32,7 @@ const News = () => {
     axios
       .get(
         `//api.mediastack.com/v1/news?access_key=1d84a4089d10d03df6d9d8647c886f18&keywords=f1&languages=en&date=${currYear}-${currMonth}-${currDate}`
-      )
+        )
       .then((response) => {
         if (response.data) {
           setNews(response.data.data);
