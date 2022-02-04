@@ -56,7 +56,7 @@ const UpcomingRace = () => {
   };
   const HandleDisplay = () => {
     if (upcomingRace && currDate && currMonth && currYear) {
-      let upcomingRaceName, upcomingRaceRound, upcomingRaceDate;
+      let upcomingRaceName, upcomingRaceRound, upcomingRaceDate,upcomingRaceYear;
       for (let i = 0; i < upcomingRace.length; i++) {
         let raceDay = upcomingRace[i].date;
         let raceDate;
@@ -83,6 +83,7 @@ const UpcomingRace = () => {
           //console.log(`${raceYear} ${raceMonth} ${raceDate}`);
           upcomingRaceName = upcomingRace[i].Circuit.circuitName;
           upcomingRaceRound = upcomingRace[i].round;
+          upcomingRaceYear=raceYear;
           upcomingRaceDate = `${raceDate} / ${raceMonth} / ${raceYear}`;
 
           break;
@@ -96,7 +97,7 @@ const UpcomingRace = () => {
           {upcomingRace ? (
             flag ? (
               <p style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'2rem'}}>
-                <span style={{color:'#ffd700',textAlign:'center',fontSize:'2rem',fontFamily:'Russo One'}}>{upcomingRaceName}</span>
+                <span style={{color:'#ffd700',textAlign:'center',fontSize:'2rem',fontFamily:'Russo One'}}>{upcomingRaceName} {upcomingRaceYear}</span>
                 <span style={{textAlign:'center',fontSize:'2rem',fontFamily:'Russo One'}}>Round: {upcomingRaceRound}</span> 
                 <span style={{textAlign:'center',fontSize:'1.5rem',fontFamily:'Russo One'}}>{upcomingRaceDate}</span>
               </p>
