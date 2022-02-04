@@ -11,58 +11,69 @@
   height: 10vh;
   background-color: black;
 }
-#trackGrid {
+#gridContainer
+{
   position: absolute;
   top: 0px;
   left:0px;
   width: 100vw;
   height: 100vh;
   z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   background-color: black;
- 
 }
-#closeButton {
-  position: absolute;
-  top: 2vh;
-  left: 96vw;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+#trackGrid {
+  position: relative;
+  top: 0px;
+  left:0px;
+  width: 90vw;
+  height: 90vh;
+  z-index: 100000;
+  background-color: black;
+  overflow: auto;
+  padding-bottom: 20px;
 }
+
 
 #openButton {
   position: absolute;
   top: 2vh;
-  left: 96vw;
-  width: 40px;
-  height: 40px;
+  left: 92vw;
+  width: 8vw;
+  height: 7vh;
   cursor: pointer;
   z-index: 1000;
 }
 #trackList {
   display: grid;
-  grid-template-columns: repeat(6,35vh);
+  padding: 4vh;
+  grid-template-columns: repeat(6,15vw);
   grid-auto-rows: auto;
   margin-top: 5vh;
-  text-align: center;
   height: 100vh;
   width: 100vw;
   background-color: black;
+  overflow:auto;
 }
 .trackListItem {
-  display: inline-flex;
-  columns: auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  text-align: center;
   width: 12vw;
   height: 18vh;
-  margin: 15px;
-  color: white;
+  padding-top: 2vh;
+  color: #7d4d00;
+  font-family: 'Russo One';
   text-overflow: contain;
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size:1rem;
   cursor: pointer;
-  background: #edcb53;
+  background: #ffd700;
   background: -webkit-linear-gradient(124deg, #63615d 0%, #ffa20f 100%);
   background: linear-gradient(124deg, #edcb53 0%, #ffa20f 100%);
 }
@@ -77,6 +88,7 @@
   z-index: 1000;
   padding:10px;
   color:#edcb53;
+  font-family: 'Russo One';
 }
 #mapQualiResults{
   position:absolute;

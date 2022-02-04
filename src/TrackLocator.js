@@ -45,7 +45,7 @@ const TrackLocator = () => {
     getDataRaceResults();
     getDataQualiResults();
     DisplayMap();
-    
+
   }, [currLat, currLong, submitYear,mapView]);
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const TrackLocator = () => {
   };
 
   const handleOpen = () => {
-    document.getElementById("trackGrid").style.display = "";
+    document.getElementById("gridContainer").style.display = "";
     document.getElementById("map").style.display = "none";
   };
 
@@ -109,7 +109,7 @@ const TrackLocator = () => {
     setCurrCircuitId(circuitId);
     setCurrName(name);
     setCurrLocality(locality);
-    document.getElementById("trackGrid").style.display = "none";
+    document.getElementById("gridContainer").style.display = "none";
     document.getElementById("map").style.display = "";
   };
   const handleInputYear = (e) => {
@@ -133,7 +133,7 @@ const TrackLocator = () => {
     let temp=[];
     if(raceResultsData)
     {
-      
+
       raceResultsData.map((driver)=>{
          temp.push({'code':driver.Driver.code,'grid':Number(driver.grid),'name':`${driver.Driver.givenName} ${driver.Driver.familyName}`});
       })
@@ -141,7 +141,7 @@ const TrackLocator = () => {
       if(temp[0] && temp[0].grid==0)
       {
         let d=temp[0];
-        temp=temp.slice(1,temp.length);  
+        temp=temp.slice(1,temp.length);
         temp.push(d);
       }
       setStartingGrid(temp);
@@ -177,7 +177,7 @@ const TrackLocator = () => {
           }}
         >
           <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Quali Results {submitYear}</p>
-        
+
           <img
             style={{ cursor: "pointer",width:'20px',height:'20px'}}
             src={require('./Assets/expand.png')}
@@ -192,7 +192,7 @@ const TrackLocator = () => {
               document.getElementById("mapQualiResults").style.display = "none";
             }}
           />
-          
+
         </span>
         <ul id="mapQualiResults" style={{display:raceToggle}}>
           {qualiResultsData && submitYear >= 2004  && submitYear<=2021? (
@@ -243,7 +243,7 @@ const TrackLocator = () => {
             raceResultsData.slice(0, 3).map((element) => {
               return (
                 <li key={element.position} className="mapRaceResultsItem">
-                  
+
                   <span style={{marginRight:'10px'}}>{element.position}</span> <span style={{marginRight:'10px'}}>{element.Driver.givenName}</span>
                   <span style={{marginRight:'10px'}}>{element.Driver.familyName}</span>  <span style={{marginRight:'10px',color:'#edcb53'}}>{element.Time.time} min</span>
                    <span style={{marginRight:'10px',color:'#edcb53'}}>Laps : {element.laps}</span> <span style={{marginRight:'10px',color:'#edcb53'}}> Started at:  {element.grid}</span>
@@ -267,7 +267,7 @@ const TrackLocator = () => {
           }}
         >
           <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Starting Grid {submitYear}</p>
-        
+
           <img
             style={{ cursor: "pointer",width:'20px',height:'20px'}}
             src={require('./Assets/expand.png')}
@@ -296,7 +296,6 @@ const TrackLocator = () => {
               document.getElementById(index.toString()).style.fontSize='1rem';
             }}
              style={{marginLeft:(index%2==0)?'0px':'60px'}} className='startingGridItem'>{element.code?<p>{element.code}</p>:<p>-----</p>}</li>
-              
            );
          }):<div className="spinner"></div>}
         </ul>
@@ -310,18 +309,19 @@ const TrackLocator = () => {
         style={{
           position: "absolute",
           top: "2%",
-          left: "5%",
+          left: "4%",
           width: "20px",
           height: "20px",
           zIndex: 1000000 ,
         }}
       >
         <p>
-          <a style={{ color: "#edcb53", fontSize: "1.5rem" }} href="/">
+          <a style={{ backgroundColor:'black',padding:'0.8vh',fontFamily:'Russo One',textDecoration:'none',color: "#edcb53", fontSize: "2rem" }} href="/">
             Home
           </a>
         </p>
       </div>
+
       <div
         style={{
           position: "absolute",
@@ -337,15 +337,16 @@ const TrackLocator = () => {
           <a style={{ color: "black", fontSize: "1.5rem" }} onClick={()=>{
             setMapView("https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=hs3S6M6cLXWe5u0OssHP");
           }}>
-            Satellite 
+           <img style={{height:'5vh',width:'3vw'}}src={require('./Assets/satellite.png')}/>
           </a>
         </p>
       </div>
+
       <div
         style={{
           position: "absolute",
-          bottom: "15%",
-          right: "15%",
+          bottom: "5%",
+          right: "10%",
           width: "20px",
           height: "20px",
           zIndex: 1000,
@@ -356,36 +357,42 @@ const TrackLocator = () => {
           <a style={{ color: "black",fontSize: "1.5rem" }} onClick={()=>{
             setMapView("https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP");
           }}>
-            Street 
+           <img style={{height:'5vh',width:'3vw'}}src={require('./Assets/street.png')}/>
           </a>
         </p>
       </div>
-      <div id="trackGrid">
-        <p style={{ color: "white", textAlign: "center", fontSize: "1.5rem" }}>
-          F1 Tracks {submitYear}
-        </p>
-        <div
+
+
+      <div id="gridContainer">
+      <div
           style={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             marginTop: "2vh",
+            overflow:'hidden',
           }}
         >
-          <div style={{ display: "flex", gap: "1rem" }}>
+          <p style={{fontFamily:'Russo One',color: "white", textAlign: "center", fontSize: "2rem",marginTop:'1vh'}}>
+          F1 Tracks {submitYear}
+         </p>
+          <div style={{ display: "flex" ,justifyContent:'center',alignItems:'center', gap: "1rem",width:'24vw',height:'15vh' }}>
             <input
               id="year"
               type="text"
               style={{
+                width:'12vw',
+                height:'5vh',
                 marginRight: "10px",
-                fontSize: "14px",
+                fontSize: "12px",
                 color: "white",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "solid 2px white",
+                borderBottom: "solid 2px black",
                 backgroundColor: "transparent",
+                fontFamily:'Russo One',
               }}
               placeholder={`${submitYear} (between  2004 to 2021)`}
               onChange={handleInputYear}
@@ -395,21 +402,23 @@ const TrackLocator = () => {
               type="submit"
               value="Submit Year"
               style={{
-                width: "8rem",
+                width: "7vw",
                 marginTop: "10px",
                 padding: "5px",
                 cursor: "pointer",
                 fontSize: "12px",
                 color: "rgba(206,147,9,0.9)",
-                border: "solid 2px black",
-                backgroundColor: "white ",
+                border: "solid 2px white",
+                backgroundColor: "white",
                 backdropFilter: "blur(10px)",
+                fontFamily:'Russo One',
               }}
               onClick={handleSubmitYear}
             />
           </div>
         </div>
-        <ul id="trackList">
+      <div id="trackGrid">
+          <ul id="trackList">
           {circuitData ? (
             circuitData.map((track) => {
               return (
@@ -426,7 +435,8 @@ const TrackLocator = () => {
                   }
                   className="trackListItem"
                 >
-                  {track.circuitName} 
+                  <span>{track.circuitName}</span>
+                  <span style={{color:'black'}}>{track.Location.locality}</span>
                 </li>
               );
             })
@@ -434,6 +444,7 @@ const TrackLocator = () => {
             <div className="spinner"></div>
           )}
         </ul>
+      </div>
       </div>
       <div id="map">
         <img
@@ -443,6 +454,7 @@ const TrackLocator = () => {
         />
         <DisplayMap />
       </div>
+      
     </>
   );
 };
