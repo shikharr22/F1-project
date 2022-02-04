@@ -4,29 +4,29 @@ import "./App.css";
 const NavigationRace = () => {
   const handlePrev = () => {
     document.getElementById("prevRace").style =
-      "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;";
+      "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;opacity:1;";
     document.getElementById("currentRace").style =
-      "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;";
+      "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
     document.getElementById("upcomingRace").style =
-      "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;";
+      "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
   };
 
   const handleCurr = () => {
     document.getElementById("currentRace").style =
-      "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;";
+      "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;opacity:1;";
     document.getElementById("upcomingRace").style =
-      "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;";
+      "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
     document.getElementById("prevRace").style =
-      "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;";
+      "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
   };
 
   const handleUpcoming = () => {
     document.getElementById("upcomingRace").style =
-      "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;";
+      "top:5%; right:50%; transform: translate(50%,5%) scale(1);opacity:1;z-index:2;opacity:1;";
     document.getElementById("prevRace").style =
-      "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;";
+      "top:8%; right:25%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
     document.getElementById("currentRace").style =
-      "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;";
+      "top:8%; right:75%; transform: translate(50%,5%) scale(0.8);opacity:1;z-index:1;opacity:0.4;";
   };
   return (
     <>

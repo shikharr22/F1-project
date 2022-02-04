@@ -83,8 +83,8 @@ const UpcomingRace = () => {
           //console.log(`${raceYear} ${raceMonth} ${raceDate}`);
           upcomingRaceName = upcomingRace[i].Circuit.circuitName;
           upcomingRaceRound = upcomingRace[i].round;
-          upcomingRaceDate = `${raceYear} ${raceMonth} ${raceDate}`
-      
+          upcomingRaceDate = `${raceDate} / ${raceMonth} / ${raceYear}`;
+
           break;
         } else {
           setFlag(false);
@@ -95,8 +95,10 @@ const UpcomingRace = () => {
         <>
           {upcomingRace ? (
             flag ? (
-              <p>
-                {upcomingRaceRound} {upcomingRaceName} {upcomingRaceDate}
+              <p style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'2rem'}}>
+                <span style={{color:'#ffd700',textAlign:'center',fontSize:'2rem',fontFamily:'Russo One'}}>{upcomingRaceName}</span>
+                <span style={{textAlign:'center',fontSize:'2rem',fontFamily:'Russo One'}}>Round: {upcomingRaceRound}</span> 
+                <span style={{textAlign:'center',fontSize:'1.5rem',fontFamily:'Russo One'}}>{upcomingRaceDate}</span>
               </p>
             ) : (
               <p>No upcoming race</p>
