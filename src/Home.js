@@ -7,6 +7,7 @@ import NavigationRace from "./NavigationRace.js";
 import NavigationTabs from "./NavigationTabs";
 import DriverStandings from "./DriverStandings";
 import ConstructorsStandings from "./ConstructorsStandings";
+import News from "./News";
 
 const App = () => {
   console.log("App Render");
@@ -31,7 +32,7 @@ const App = () => {
             <ConstructorsStandings />
           </div>
         </div>
-        <div id="news"></div>
+        <div id="news"><News/></div>
       </div>
     </>
   );

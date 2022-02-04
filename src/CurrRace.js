@@ -129,7 +129,7 @@ const CurrRace = () => {
             </p>
           ) : (
              <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center' }}>
-              <img  style={{width:'100%',height:'30vh'}}src={require('./Assets/noLiveAction.gif')}/>
+              <img  style={{width:'100%',height:'30vh'}}src={require('./Assets/noLiveAction1.gif')}/>
               </div>
           )}
         </>
