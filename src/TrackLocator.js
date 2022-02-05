@@ -93,10 +93,7 @@ const TrackLocator = () => {
       .catch((error) => console.log(error));
   };
 
-  const handleClose = () => {
-    document.getElementById("trackGrid").style.display = "none";
-    document.getElementById("map").style.display = "";
-  };
+
 
   const handleOpen = () => {
     document.getElementById("gridContainer").style.display = "";
@@ -135,7 +132,7 @@ const TrackLocator = () => {
     {
 
       raceResultsData.map((driver)=>{
-         temp.push({'code':driver.Driver.code,'grid':Number(driver.grid),'name':`${driver.Driver.givenName} ${driver.Driver.familyName}`});
+         temp.push({'code':(driver.Driver.code)?driver.Driver.code:driver.Driver.familyName.slice(0,3),'grid':Number(driver.grid),'name':`${driver.Driver.givenName} ${driver.Driver.familyName}`});
       })
       temp.sort(compare);
       if(temp[0] && temp[0].grid==0)
@@ -176,17 +173,17 @@ const TrackLocator = () => {
             backgroundColor: "transparent",
           }}
         >
-          <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Quali Results {submitYear}</p>
+          <p style={{fontFamily:'Russo One',color:'#ffd700',fontSize:'1.2rem',backgroundColor:'#A50021',padding:'1vh',borderRadius:'5px'}}>Quali Results {submitYear}</p>
 
           <img
-            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            style={{ cursor: "pointer",width:'1.5vw',height:'3vh'}}
             src={require('./Assets/expand.png')}
             onClick={() => {
               document.getElementById("mapQualiResults").style.display = "";
             }}
           />
            <img
-            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            style={{ cursor: "pointer",width:'1.5vw',height:'3vh'}}
             src={require('./Assets/minimise.png')}
             onClick={() => {
               document.getElementById("mapQualiResults").style.display = "none";
@@ -196,18 +193,21 @@ const TrackLocator = () => {
         </span>
         <ul id="mapQualiResults" style={{display:raceToggle}}>
           {qualiResultsData && submitYear >= 2004  && submitYear<=2021? (
-            qualiResultsData.slice(0, 3).map((element) => {
+            qualiResultsData.slice(0,5).map((element,index) => {
               return (
                 <li key={element.position} className="mapQualiResultsItem">
-                  {" "}
-                  <span style={{marginRight:'10px'}}>{element.position}</span> <span style={{marginRight:'5px'}}>{element.Driver.givenName}</span>
-                  <span style={{marginRight:'10px'}}>{element.Driver.familyName}</span> <span style={{marginRight:'10px',color:'#edcb53'}}>{element.Q1} min</span> <span style={{marginRight:'10px',color:'#edcb53'}}>{(element.Q2)?`${element.Q2} min`:<p>No Data</p>}</span>
-                  <span style={{marginRight:'10px',color:'#edcb53'}}>{(element.Q3)?`${element.Q3} min`:<p>No data</p>} </span>
+                  <span style={{marginLeft:'0px',width:'10%'}}>{
+                      (element.position==(index+1).toString() && (index+1==1 || index+1==2 || index+1==3  ))?<img  style={{width:'1.4vw',height:'2.7vh'}} src={require(`./Assets/${index+1}medal.png`)}/>:<p>{element.position}</p>}
+      </span> 
+                  <span style={{marginLeft:'0px',width:'20%'}}>{element.Driver.givenName} {element.Driver.familyName}</span>
+                  <span style={{marginLeft:'0px',width:'20%',color:'#ffd700'}}><span style={{color:'white'}}>Q1:{" "}</span>{element.Q1}min</span> 
+                  <span style={{marginLeft:'0px',width:'20%',color:'#ffd700'}}><span style={{color:'white'}}>Q2:{" "}</span>{(element.Q2)?`${element.Q2} min`:<p>----</p>}</span>
+                  <span style={{marginLeft:'0px',width:'20%',color:'#ffd700'}}><span style={{color:'white'}}>Q3:{" "}</span>{(element.Q3)?`${element.Q3} min`:<p>----</p>} </span>
                 </li>
               );
             })
           ) : (
-            <div className="spinner"></div>
+            <p style={{marginTop:'4vh',width:'auto',fontFamily:'Russo One',color:'#ffd700',fontSize:'1.2rem',backgroundColor:'#A50021',padding:'1vh',borderRadius:'5px'}}>Qualifications data only available from 2003</p>
           )}
         </ul>
         <span
@@ -222,16 +222,16 @@ const TrackLocator = () => {
             backgroundColor: "transparent",
           }}
         >
-          <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Race Results {submitYear}</p>
+          <p style={{fontFamily:'Russo One',color:'#ffd700',fontSize:'1.2rem',backgroundColor:'#A50021',padding:'1vh',borderRadius:'5px'}}>Race Results {submitYear}</p>
           <img
-            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+             style={{ cursor: "pointer",width:'1.5vw',height:'3vh'}}
             src={require('./Assets/expand.png')}
             onClick={() => {
               document.getElementById("mapRaceResults").style.display = "";
             }}
           />
            <img
-            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+            style={{ cursor: "pointer",width:'1.5vw',height:'3vh'}}
             src={require('./Assets/minimise.png')}
             onClick={() => {
               document.getElementById("mapRaceResults").style.display = "none";
@@ -239,19 +239,21 @@ const TrackLocator = () => {
           />
         </span>
         <ul id="mapRaceResults" style={{display:raceToggle}}>
-          {raceResultsData && submitYear >= 2004  && submitYear<=2021? (
-            raceResultsData.slice(0, 3).map((element) => {
+          {raceResultsData && submitYear>=1950  && submitYear<=2021? (
+            raceResultsData.slice(0,5).map((element,index) => {
               return (
                 <li key={element.position} className="mapRaceResultsItem">
 
-                  <span style={{marginRight:'10px'}}>{element.position}</span> <span style={{marginRight:'10px'}}>{element.Driver.givenName}</span>
-                  <span style={{marginRight:'10px'}}>{element.Driver.familyName}</span>  <span style={{marginRight:'10px',color:'#edcb53'}}>{element.Time.time} min</span>
-                   <span style={{marginRight:'10px',color:'#edcb53'}}>Laps : {element.laps}</span> <span style={{marginRight:'10px',color:'#edcb53'}}> Started at:  {element.grid}</span>
+                  <span style={{marginLeft:'0px',width:'10%'}}>{(element.position==(index+1).toString() && (index+1==1 || index+1==2 || index+1==3  ))?<img  style={{width:'1.4vw',height:'2.7vh'}} src={require(`./Assets/${index+1}medal.png`)}/>:<p>{element.position}</p>}
+      </span> 
+                  <span style={{marginLeft:'10px',width:'30%'}}>{element.Driver.givenName} {element.Driver.familyName}</span>
+                  <span style={{marginRight:'50px',color:'#ffd700',width:'20%'}}>{(element.Time)?<p>{element.Time.time}{index==0?<p>min</p>:<p>sec</p>}</p>:<p>No time</p>}</span>
+                  <span style={{marginRight:'auto',color:'#ffd700',width:'40%'}}>Laps : {element.laps}</span> <span style={{marginRight:'10px',color:'#ffd700'}}> Started at:  {element.grid}</span>
                 </li>
               );
             })
           ) : (
-            <div className="spinner"></div>
+            <p style={{marginTop:'4vh',width:'auto',fontFamily:'Russo One',color:'#ffd700',fontSize:'1.2rem',backgroundColor:'#A50021',padding:'1vh',borderRadius:'5px'}}>Race data only available from 2003</p>
           )}
         </ul>
         <span
@@ -266,17 +268,17 @@ const TrackLocator = () => {
             backgroundColor: "transparent",
           }}
         >
-          <p style={{color:'black',fontSize:'1.2rem',backgroundColor:'#edcb53',padding:'2px',borderRadius:'5px'}}>Starting Grid {submitYear}</p>
+          <p  style={{fontFamily:'Russo One',color:'#ffd700',fontSize:'1.2rem',backgroundColor:'#A50021',padding:'1vh',borderRadius:'5px'}}>Starting Grid {submitYear}</p>
 
           <img
-            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+             style={{ cursor: "pointer",width:'1.5vw',height:'3vh'}}
             src={require('./Assets/expand.png')}
             onClick={() => {
               document.getElementById("startingGrid").style.display = "";
             }}
           />
            <img
-            style={{ cursor: "pointer",width:'20px',height:'20px'}}
+             style={{ cursor: "pointer",width:'1.5vw',height:'3vh'}}
             src={require('./Assets/minimise.png')}
             onClick={() => {
               document.getElementById("startingGrid").style.display = "none";
@@ -308,7 +310,7 @@ const TrackLocator = () => {
       <div
         style={{
           position: "absolute",
-          top: "2%",
+          top: "0%",
           left: "4%",
           width: "20px",
           height: "20px",
@@ -316,7 +318,7 @@ const TrackLocator = () => {
         }}
       >
         <p>
-          <a style={{ backgroundColor:'black',padding:'0.8vh',fontFamily:'Russo One',textDecoration:'none',color: "#edcb53", fontSize: "2rem" }} href="/">
+          <a style={{ backgroundColor:'#A50021',padding:'0.8vh',fontFamily:'Russo One',textDecoration:'none',color: "#edcb53", fontSize: "2rem",borderRadius:'1vh'}} href="/">
             Home
           </a>
         </p>
@@ -394,7 +396,7 @@ const TrackLocator = () => {
                 backgroundColor: "transparent",
                 fontFamily:'Russo One',
               }}
-              placeholder={`${submitYear} (between  2004 to 2021)`}
+              placeholder={`${submitYear} (between  1950 to 2021)`}
               onChange={handleInputYear}
             />
             <input
@@ -447,11 +449,22 @@ const TrackLocator = () => {
       </div>
       </div>
       <div id="map">
-        <img
-          id="openButton"
-          src={require("./Assets/open.png")}
-          onClick={handleOpen}
-        />
+      <div
+        style={{
+          position: "absolute",
+          top: "2%",
+          right: "6%",
+          width: "20px",
+          height: "20px",
+          zIndex: 10000 ,
+        }}
+      >
+        <p>
+          <a onClick={()=>handleOpen()} style={{ backgroundColor:'#A50021',padding:'0.8vh',fontFamily:'Russo One',textDecoration:'none',color: "#edcb53", fontSize: "2rem",borderRadius:'1vh'}} href="#">
+            Tracks
+          </a>
+        </p>
+      </div>
         <DisplayMap />
       </div>
       

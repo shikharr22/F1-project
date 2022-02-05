@@ -87,24 +87,24 @@
   font-size: 1.5rem;
   z-index: 1000;
   padding:10px;
-  color:#edcb53;
+  color:#ffd700;
   font-family: 'Russo One';
 }
 #mapQualiResults{
   position:absolute;
   top:12%;
   left:1%;
-  width:35vw;
-  height:20vw;
+  width:40vw;
+  height:100vh;
   z-index: 1000;
   color:white;
   list-style: none;
   display:flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding:10px;
+  padding:20px;
   cursor: pointer;
   background-color: transparent;
+  overflow: auto;
  
 }
 
@@ -112,12 +112,14 @@
 .mapQualiResultsItem
 {
   display: flex;
-  font-family:'Secular One';
+  font-family:'Russo One';
   text-decoration:none;
-  margin-top:5px;
-  background-color: #A50021;
+  background-color: black;
+  color:white;
+  margin-top:4vh;
   padding:10px;
   font-size: 0.2rem;
+  z-index: 10000;
   
 }
 
@@ -127,30 +129,28 @@
   top:12%;
   left:40%;
   width:35vw;
-  height:20vw;
+  height:100vh;
   z-index: 1000;
   background-color: transparent;
   list-style: none;
   display:flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding:10px;
+  padding-top:20px;
   cursor: pointer;
-  
 
 }
 
 .mapRaceResultsItem
 {
   display: flex;
-  font-family:'Secular One';
+  font-family:'Russo One';
   text-decoration:none;
-  margin-top:5px;
-  background-color: #A50021;
+  background-color: black;
   color:white;
+  margin-top:4vh;
   padding:10px;
   font-size: 0.2rem;
-  
+  z-index: 10000;
 }
 
 #startingGrid
@@ -161,10 +161,10 @@
   width:auto;
   height:auto;
   z-index: 1000;
-  background-color: #A50021;
+  background-color: black;
   list-style: none; 
   cursor: pointer;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -173,14 +173,16 @@
 .startingGridItem
 {
   width:auto;
+  font-family: 'Russo One';
   color:#edcb53;
   width:3.2vw;
   padding:0px 2px 0 2px;
   text-align:center;
+  text-transform: uppercase;
   border-top:white 2px solid;
   border-right:white solid 2px;
   border-left:white solid 2px;
- 
+  
 }
 
 
