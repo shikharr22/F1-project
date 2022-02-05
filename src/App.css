@@ -29,7 +29,7 @@
   width: 100vw;
   height: 100vh;
   background-color: black;
-  background: black;
+  background: url('./Assets/homeScreen2.png ');
   perspective: -110px;
   background-repeat: no-repeat;
   background-position: center;

@@ -11,6 +11,7 @@ import "leaflet/dist/leaflet.css";
 import "./Map.css";
 import axios from "axios";
 import L, { map } from "leaflet";
+import { borderRadius } from "@mui/system";
 
 const newIcon = new L.icon({
   iconUrl: require("./Assets/f1Logo.png"),
@@ -325,41 +326,55 @@ const TrackLocator = () => {
       </div>
 
       <div
+      id="satellite"
         style={{
           position: "absolute",
-          bottom: "5%",
-          right: "15%",
-          width: "20px",
-          height: "20px",
+          top: "30%",
+          right: "0%",
+          width: "auto",
+          height: "auto",
           zIndex: 1000,
           cursor:'pointer',
+          padding:'1vw',
+          backgroundColor:'#ffd700',
+          borderRadius:'1vw',
+          transform:'scale(0.7)'
         }}
       >
         <p>
           <a style={{ color: "black", fontSize: "1.5rem" }} onClick={()=>{
+             document.getElementById('satellite').style.backgroundColor='#ffd700'; 
+             document.getElementById('street').style.backgroundColor='#black';   
             setMapView("https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=hs3S6M6cLXWe5u0OssHP");
           }}>
-           <img style={{height:'5vh',width:'3vw'}}src={require('./Assets/satellite.png')}/>
+           <img  style={{height:'6vh',width:'3vw'}}src={require('./Assets/satellite.png')}/>
           </a>
         </p>
       </div>
 
       <div
+      id="street"
         style={{
           position: "absolute",
-          bottom: "5%",
-          right: "10%",
-          width: "20px",
-          height: "20px",
+          top: "20%",
+          right: "0%",
+          width: "auto",
+          height: "auto",
           zIndex: 1000,
           cursor:'pointer',
+          padding:'1vw',
+          backgroundColor:'black',
+          borderRadius:'1vw',
+          transform:'scale(0.7)'
         }}
       >
         <p>
           <a style={{ color: "black",fontSize: "1.5rem" }} onClick={()=>{
+            document.getElementById('street').style.backgroundColor='#ffd700';  
+            document.getElementById('satellite').style.backgroundColor='black';  
             setMapView("https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hs3S6M6cLXWe5u0OssHP");
           }}>
-           <img style={{height:'5vh',width:'3vw'}}src={require('./Assets/street.png')}/>
+           <img  style={{height:'6vh',width:'3vw'}}src={require('./Assets/street.png')}/>
           </a>
         </p>
       </div>
@@ -439,6 +454,7 @@ const TrackLocator = () => {
                 >
                   <span>{track.circuitName}</span>
                   <span style={{color:'black'}}>{track.Location.locality}</span>
+                  <span style={{color:'black'}}>{track.Location.country}</span>
                 </li>
               );
             })
