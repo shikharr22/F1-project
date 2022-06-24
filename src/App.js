@@ -4,11 +4,13 @@ import {Route,BrowserRouter as Router, Switch, Routes} from 'react-router-dom';
 import TrackLocator from "./TrackLocator";
 import Home from "./Home.js";
 
+
 const App = () => {
   console.log("App Render");
 
   return (
     <>
+
     <Router>
       <Routes>
       <Route exact path='/' element={<Home/>} />

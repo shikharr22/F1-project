@@ -16,13 +16,15 @@ const App = () => {
     <>
       <div id="container">
         <div id="homeScreenSection">
-          <div>
+          <div id='raceStats'>
             <PrevRace />
             <CurrRace />
             <UpcomingRace />
           </div>
           <NavigationRace />
-          <NavigationTabs />
+        </div>
+        <div id="tabs">
+           <NavigationTabs />
         </div>
         <div id="standings">
           <div id="driversStandings">
@@ -32,7 +34,7 @@ const App = () => {
             <ConstructorsStandings />
           </div>
         </div>
-        <div id="news"><News/></div>
+        {/* <div id="news"><News/></div> */}
       </div>
     </>
   );

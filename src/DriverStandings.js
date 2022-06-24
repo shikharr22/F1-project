@@ -5,9 +5,9 @@ import { Input } from "@mui/material";
 
 const DriverStandings = () => {
   const [dStandings, setDStandings] = useState([]);
-  const [inputYear, setInputYear] = useState(2021);
+  const [inputYear, setInputYear] = useState(2022);
   const [inputRound, setInputRound] = useState(22);
-  const [submitYear, setSubmitYear] = useState(2021);
+  const [submitYear, setSubmitYear] = useState(2022);
   const [totalRounds, setTotalRounds] = useState(22);
   const [submitRound, setSubmitRound] = useState(totalRounds);
 

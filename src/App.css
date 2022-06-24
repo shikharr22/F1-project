@@ -26,22 +26,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 100vw;
   height: 100vh;
   background-color: black;
-  background: url('./Assets/homeScreen2.png ');
   perspective: -110px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100vw 100vh;
+}
+#raceStats
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
 }
 #prevRace {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 35%;
-  height: 40%;
+  width: 40%;
+  height: 50%;
   font-size: 2rem;
   color: white;
   background-color: grey;
@@ -63,8 +70,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 35%;
-  height: 40%;
+  width: 40%;
+  height: 50%;
   background-color: grey;
   margin-top: 15px;
   padding-top: 4vh;
@@ -84,8 +91,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35%;
-  height: 40%;
+  width: 40%;
+  height: 50%;
   margin-top: 15px;
   z-index: 1;
   color: white;
@@ -102,7 +109,7 @@
 }
 #navigation {
   position: relative;
-  top: 45vh;
+  top: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,13 +130,22 @@
 }
 #navigationTabs {
   position: relative;
-  top: 40vh;
+  top: 10vh;
   width: 100vw;
   height: 42vh;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#tabs
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
 }
 .tabs {
   width: 15%;

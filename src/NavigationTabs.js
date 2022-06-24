@@ -1,78 +1,59 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { CardMedia } from "@mui/material";
+
+
+const handleDriverMouseOver=()=>{
+  console.log("Driver Standings")
+}
 
 const NavigationTabs = () => {
-  const [flag1, setFlag1] = useState(2);
-  const [flag2, setFlag2] = useState(2);
-  const [flag3, setFlag3] = useState(2);
-  const [flag4, setFlag4] = useState(2);
   return (
     <>
       <div id="navigationTabs">
-        <div className="tabs">
-          <a
-            href="#standings"
-            style={{ backgroundColor: "transparent" }}
-            onMouseOver={() => setFlag1(1)}
-            onMouseOut={() => setFlag1(2)}
-          >
-            <img
-              style={{ width: "90%", height: "100%" }}
-              src={require(`./Assets/driversStandings${flag1}.png`)}
-            />
-          </a>
-        </div>
-        <div className="tabs">
-          <a
-            href="#standings"
-            style={{ backgroundColor: "transparent" }}
-            onMouseOver={() => setFlag2(1)}
-            onMouseOut={() => setFlag2(2)}
-          >
-            <img
-              style={{
-                width: "90%",
-                height: "100%",
-                backgroundColor: "transparent",
-              }}
-              src={require(`./Assets/ConstructorsStandings${flag2}.png`)}
-            />
-          </a>
-        </div>
-        <div className="tabs">
-          <a
-            href="#news"
-            style={{ backgroundColor: "transparent" }}
-            onMouseOver={() => setFlag3(1)}
-            onMouseOut={() => setFlag3(2)}
-          >
-            <img
-              style={{
-                width: "90%",
-                height: "100%",
-                backgroundColor: "transparent",
-              }}
-              src={require(`./Assets/news${flag3}.png`)}
-            />
-          </a>
-        </div>
-        <div className="tabs">
-         
-          <a
-            href="/TrackLocator"
-            target="_blank"
-            style={{ backgroundColor: "transparent" }}
-            onMouseOver={() => setFlag4(1)}
-            onMouseOut={() => setFlag4(2)}
-          >
-            <img
-              style={{ width: "90%", height: "100%" }}
-              src={require(`./Assets/trackLocator${flag4}.png`)}
-            />
-          </a>
-        
-        </div>
+        <Card  sx={{backgroundColor:"transparent",margin:20,minWidth:200}}>
+          <CardContent>
+            <a  onMouseOver={handleDriverMouseOver} href="#standings" style={{ backgroundColor: "transparent" }}>
+              <CardMedia
+                component="img"
+                height="1"
+                src={require("./Assets/driversStandings2.png")}
+                alt="Drivers standings"
+              />
+            </a>
+          </CardContent>
+        </Card>
+        <Card  sx={{backgroundColor:"transparent",margin:20,minWidth:100}}>
+          <CardContent>
+          <a href="#standings" style={{ backgroundColor: "transparent" }}>
+          <CardMedia
+                component="img"
+                height="1"
+                src={require("./Assets/ConstructorsStandings2.png")}
+                alt="Constructors standings"
+              />
+              </a>
+          </CardContent>
+        </Card>
+        <Card  sx={{backgroundColor:"transparent",margin:20,minWidth:100}}>
+          <CardContent>
+          <a href="/TrackLocator" target="_blank" style={{ backgroundColor: "transparent" }}>
+          <CardMedia
+                component="img"
+                height="1"
+                src={require("./Assets/trackLocator2.png")}
+                alt="Track Locator"
+              />
+              </a>
+          </CardContent>
+        </Card>
       </div>
     </>
   );

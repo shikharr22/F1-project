@@ -56,14 +56,15 @@ const UpcomingRace = () => {
   };
   const HandleDisplay = () => {
     if (upcomingRace && currDate && currMonth && currYear) {
+
+      console.log(upcomingRace);
       let upcomingRaceName, upcomingRaceRound, upcomingRaceDate,upcomingRaceYear;
       for (let i = 0; i < upcomingRace.length; i++) {
         let raceDay = upcomingRace[i].date;
         let raceDate;
-        let raceYear;
+        let raceYear=Number(upcomingRace[i].season);
         let raceMonth;
-
-        raceYear = Number(raceDay.slice(0, 4));
+       
         raceMonth = raceDay.slice(5, 7);
         if (raceMonth[0] == "0") {
           raceMonth = Number(raceMonth[1]);
@@ -78,14 +79,15 @@ const UpcomingRace = () => {
           raceDate = Number(raceDate);
         }
 
-        if (currYear == raceYear && raceDate - currDate > 2) {
+        console.log(`${raceDate} ${raceMonth} ${raceYear}`)
+
+        if (currYear == raceYear &&  ((raceMonth==currMonth && raceDate-currDate>2)) || (raceMonth>currMonth)) {
           setFlag(true);
           //console.log(`${raceYear} ${raceMonth} ${raceDate}`);
           upcomingRaceName = upcomingRace[i].Circuit.circuitName;
           upcomingRaceRound = upcomingRace[i].round;
           upcomingRaceYear=raceYear;
           upcomingRaceDate = `${raceDate} / ${raceMonth} / ${raceYear}`;
-
           break;
         } else {
           setFlag(false);
