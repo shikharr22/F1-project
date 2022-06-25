@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
 
 const PrevRace = () => {
   const [prevRace, setPrevRace] = useState([]);
@@ -25,7 +31,7 @@ const PrevRace = () => {
 
   return (
     <>
-      <div id="prevRace">
+      <Card id="prevRace">
         {prevRace[0]? (
           <div  style={{display:'flex',flexDirection:'column',gap:'2rem'}} key='1'>
           <p style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',fontFamily:'Russo One'}}>
@@ -48,7 +54,7 @@ const PrevRace = () => {
         ) : (
           <div className="spinner"></div>
         )}
-      </div>
+      </Card>
     </>
   );
 };

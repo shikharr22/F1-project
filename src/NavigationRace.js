@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { ButtonGroup , Button} from "@mui/material";
+import { ButtonGroup, Button } from "@mui/material";
 
 const NavigationRace = () => {
   const handlePrev = () => {
@@ -43,51 +43,67 @@ const NavigationRace = () => {
   };
   return (
     <>
-      <ButtonGroup size="large"  id="navigation" color="secondary" variant="text" aria-label="text button group">
-         
-         
-        <Button><a
-          href="#"
-          id="previous"
-          className="navigationItem"
-          onClick={handlePrev}
-          style={{
-            backgroundColor: "transparent",
-            fontFamily: "Russo One",
-            color: "white",
-            fontSize: "1.4rem",
-          }}
-        >PREVIOUS </a></Button>
-       
-       
-         <Button>  <a
-          href="#"
-          className="navigationItem"
-          id="current"
-          style={{
-            backgroundColor: "transparent",
-            fontFamily: "Russo One",
-            color: "#ffd700",
-            fontSize: "1.4rem",
-          }}
-          onClick={handleCurr}
-        >CURRENT </a></Button>
-       
-       
-           <Button>  <a
-          id="upcoming"
-          href="#"
-          className="navigationItem"
-          onClick={handleUpcoming}
-          style={{
-            backgroundColor: "transparent",
-            fontFamily: "Russo One",
-            color: "white",
-            fontSize: "1.4rem",
-          }}
-        > UPCOMING </a></Button>
-       
+      <ButtonGroup
+        size="large"
+        color="secondary"
+        variant="text"
+        aria-label="text button group"
+      >
+        <Button>
+          <a
+            href="#"
+            id="previous"
+            className="navigationItem"
+            onClick={handlePrev}
+            style={{
+              backgroundColor: "transparent",
+              fontFamily: "Russo One",
+              color: "white",
+              fontSize: "1.4rem",
+            }}
+          >
+            PREVIOUS{" "}
+          </a>
+        </Button>
+
+        <Button>
+          {" "}
+          <a
+            href="#"
+
+            id="current"
+            style={{
+              backgroundColor: "transparent",
+              fontFamily: "Russo One",
+              color: "#ffd700",
+              fontSize: "1.4rem",
+            }}
+            onClick={handleCurr}
+          >
+            CURRENT{" "}
+          </a>
+        </Button>
+
+        <Button>
+          {" "}
+          <a
+            id="upcoming"
+            href="#"
+
+            onClick={handleUpcoming}
+            style={{
+              backgroundColor: "transparent",
+              fontFamily: "Russo One",
+              color: "white",
+              fontSize: "1.4rem",
+            }}
+          >
+            {" "}
+            UPCOMING{" "}
+          </a>
+        </Button>
       </ButtonGroup>
+     
     </>
   );
 };

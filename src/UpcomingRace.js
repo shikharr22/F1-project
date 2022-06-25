@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
+
 
 const UpcomingRace = () => {
   const [upcomingRace, setUpcomingRace] = useState([]);
@@ -118,9 +125,9 @@ const UpcomingRace = () => {
 
   return (
     <>
-      <div id="upcomingRace">
+      <Card id="upcomingRace">
         <HandleDisplay />
-      </div>
+      </Card>
     </>
   );
 };

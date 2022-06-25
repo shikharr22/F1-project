@@ -8,34 +8,79 @@ import NavigationTabs from "./NavigationTabs";
 import DriverStandings from "./DriverStandings";
 import ConstructorsStandings from "./ConstructorsStandings";
 import News from "./News";
+import { Grid, Typography } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const App = () => {
   console.log("App Render");
 
   return (
     <>
-      <div id="container">
-        <div id="homeScreenSection">
-          <div id='raceStats'>
-            <PrevRace />
-            <CurrRace />
-            <UpcomingRace />
+      <Grid container direction="column">
+        <Grid item xs={12}>
+          <div
+            style={{
+              height: "65vh",
+              width: "100vw",
+              backgroundColor: "black",
+              color: "white",
+              overflowX: "hidden",
+              padding: 0,
+            }}
+          >
+            <Grid container direction="row" RowSpacing={3}>
+              <Grid item xs={3}>
+                <PrevRace />
+              </Grid>
+              <Grid item xs={3}>
+                {" "}
+                <CurrRace />
+              </Grid>
+              <Grid item xs={3}>
+                {" "}
+                <UpcomingRace />
+              </Grid>
+            </Grid>
           </div>
-          <NavigationRace />
-        </div>
-        <div id="tabs">
-           <NavigationTabs />
-        </div>
-        <div id="standings">
-          <div id="driversStandings">
-            <DriverStandings />
+        </Grid>
+        <Grid item xs={12}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection:'column',
+              justifyContent: "center",
+              alignItems:"center",
+              height: "35vh",
+              width: "100vw",
+              gap:10,
+              backgroundColor: "black",
+            }}
+          >
+            <NavigationRace />
+          
+            <a href="#navigationTabs">
+              <p style={{fontSize:"2vh",color:"#ffd700",fontWeight:'bold'}}>EXPLORE MORE</p>
+            </a>
           </div>
-          <div id="constructorsStandings">
-            <ConstructorsStandings />
+        </Grid>
+        <Grid item xs={12}>
+          <div id="tabs" style={{display:"flex",direction:"column",justifyContent:"center",alignItems:"center",height: "100vh", width: "100vw" }}>
+            <NavigationTabs/>  
           </div>
-        </div>
-        {/* <div id="news"><News/></div> */}
-      </div>
+        </Grid>
+        <Grid item xs={12}>
+          <div
+            style={{
+              height: "100vh",
+              width: "100vw",
+              backgroundColor: "black",
+              color: "white",
+            }}
+          >
+            standings
+          </div>
+        </Grid>
+      </Grid>
     </>
   );
 };

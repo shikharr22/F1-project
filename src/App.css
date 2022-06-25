@@ -22,26 +22,7 @@
   flex-direction: column;
   overflow: hidden;
 }
-#homeScreenSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  perspective: -110px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100vw 100vh;
-}
-#raceStats
-{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items:center;
-}
 #prevRace {
   display: flex;
   flex-direction: column;
@@ -113,7 +94,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:1.5rem;
+  gap: 1.5rem;
   width: 100%;
   height: 12vh;
   margin-top: 14px;
@@ -130,7 +111,7 @@
 }
 #navigationTabs {
   position: relative;
-  top: 10vh;
+  top: 20vh;
   width: 100vw;
   height: 42vh;
   background-color: transparent;
@@ -138,14 +119,15 @@
   justify-content: center;
   align-items: center;
 }
-#tabs
-{
+#tabs {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background-color: white;
+  margin-top: 20vh;
 }
 .tabs {
   width: 15%;
@@ -184,7 +166,6 @@
   padding: 10px;
   opacity: 1;
 }
-
 
 .standingsContainer {
   display: flex;
@@ -273,19 +254,18 @@
 
 #news {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   justify-content: center;
   width: 100vw;
   height: 100vh;
   background-color: black;
-  overflow:auto;
+  overflow: auto;
   border-top: solid white 2px;
   padding: 4vh;
-  gap:2vh;
+  gap: 2vh;
 }
 
-.newsListItem1
-{
+.newsListItem1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -294,15 +274,12 @@
   height: 32vh;
   color: white;
   margin: 2vh;
-  padding:1vh;
-  background:black;
-  border-radius:5px;
+  padding: 1vh;
+  background: black;
+  border-radius: 5px;
   opacity: 0.9;
-
-
 }
-.newsListItem2
-{
+.newsListItem2 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -311,13 +288,29 @@
   height: 32vh;
   color: white;
   margin: 2vh;
-  padding:1vh;
+  padding: 1vh;
   opacity: 0.9;
   background: black;
-  border-radius:5px;
-
+  border-radius: 5px;
 }
-
+.bgImageDriver {
+  background-image: url("https://e0.365dm.com/22/03/2048x1152/skysports-f1-2022-driver-preview_5706316.jpg  ");
+  background-size: cover;
+  height: 10px;
+  width: 10px;
+}
+.bgImageConst {
+  background-image: url("https://e0.365dm.com/19/10/2048x1152/skysports-mercedes-lewis-hamilton_4803555.jpg");
+  background-size: cover;
+  height: 10px;
+  width: 10px;
+}
+.bgImageTrack {
+  background-image: url("https://www.telegraph.co.uk/content/dam/formula-1/2022/01/03/TELEMMGLPICT000259431488_trans_NvBQzQNjv4BqWy_u4a9GUNQgLIY2EGV3qghi1ZMFW4tO_4Pqw0owwW0.jpeg");
+  background-size: cover;
+  height: 10px;
+  width: 10px;
+}
 
 /* Animations */
 .spinner {
