@@ -1,6 +1,7 @@
 import React, { useState, memo, useEffect, useMemo } from "react";
 import axios from "axios";
 import "./App.css";
+import { Grid, TextField, Button, Stack } from "@mui/material";
 
 const ConstructorsStandings = () => {
   const [cStandings, setCStandings] = useState([]);
@@ -79,155 +80,160 @@ const ConstructorsStandings = () => {
   return (
     <>
       {cStandings[0] ? (
-        <div className="standingsContainer">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              margin: "20px",
-              backgroundColor: "transparent",
-            }}
-          >
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <input
-                id="year"
-                type="text"
-                style={{
-                  width:'12vw',
-                  marginRight: "10px",
-                  fontSize: "12px",
-                  color: "white",
-                  borderTop: "none",
-                  borderLeft: "none",
-                  borderRight: "none",
-                  borderBottom: "solid 2px black",
-                  backgroundColor: "transparent",
-                  fontFamily:'Russo One',
-                }}
-                placeholder={`${submitYear} (between  1958 to 2022)`}
-                onChange={handleInputYear}
-              />
-              <input
-                id="yearButton"
-                type="submit"
-                value="Submit Year"
-                style={{
-                  width: "7vw",
-                  marginTop: "10px",
-                  padding: "5px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  color: "rgba(206,147,9,0.9)",
-                  border: "solid 2px black",
-                  backgroundColor: "black ",
-                  backdropFilter: "blur(10px)",
-                  fontFamily:'Russo One',
-                }}
-                onClick={handleSubmitYear}
-              />
-            </div>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <input
-                id="round"
-                type="text"
-                style={{
-                  width:'12vw',
-                  marginRight: "10px",
-                  fontSize: "12px",
-                  color: "white",
-                  borderTop: "none",
-                  borderLeft: "none",
-                  borderRight: "none",
-                  borderBottom: "solid 2px black",
-                  backgroundColor: "transparent",
-                  fontFamily:'Russo One',
-                }}
-                placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
-                onChange={handleInputRound}
-              />
+        <Grid
+        container
+        spacing={2}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Grid item xs={12}>
+          <Grid container spacing={2}  direction="row" justifyContent="flex-start" alignItems="center">
+            <Grid item spacing={3}>
+            <TextField
+              label=""
+              helperText="Submit any year from 1950 to 2022"
+              
+              size="small"
+              color="secondary"
+              variant="standard"
+              sx={{input:{fontFamily:2,color:"white",fontFamily:'Russo One'}}}
+              onChange={handleInputYear}
+            />
+            <Button
+              color="secondary"
+              onClick={handleSubmitYear}
+              
+              size="small"
+            >
 
-              <input
-                id="roundButton"
-                type="submit"
-                value="Submit Round"
-                style={{
-                  width: "7vw",
-                  marginTop: "10px",
-                  padding: "5px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  color: "rgba(206,147,9,0.9)",
-                  border: "solid 2px black",
-                  backgroundColor: "black ",
-                  backdropFilter: "blur(10px)",
-                  fontFamily:'Russo One',
-                }}
-                onClick={handleSubmitRound}
-              />
-            </div>
-          </div>
-          <p id="standingsTitle">
-                {" "}
-                <img
-                  src={require("./Assets/f1Logo.png")}
-                  style={{
-                    backgroundColor: "transparent",
-                    height: "50px",
-                    width: "50px",
-                  }}
-                />
-                Constructors Standings {submitYear}
+             <span style={{fontFamily:"Russo One",fontWeight:"bold",color:"white"}}> Submit Year </span>
+            </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+        <Grid container spacing={2}  direction="row" justifyContent="flex-start" alignItems="center">
+        <Grid item >
+            <TextField
+              label=""
+              helperText="Submit any round from 1 to 22"
+              
+              size="small"
+              color="secondary"
+              variant="standard"
+              sx={{input:{fontFamily:2,color:"white",fontFamily:'Russo One'}}}
+              onChange={handleInputRound}
+            />
+            <Button
+              onClick={handleSubmitRound}
+              size="small"
+              color="secondary"
+            >
+              <span style={{fontFamily:"Russo One",fontWeight:"bold",color:"white"}}>Submit Round </span> 
+            </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Stack
+            spacing={2}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <img
+              src={require("./Assets/f1Logo.png")}
+              style={{
+                backgroundColor: "transparent",
+                height: "50px",
+                width: "50px",
+              }}
+            />
+              <p style={{ fontFamily:"Russo One",color: "#ffd700", fontSize: "1.5rem" }}>
+              Constructors Standings {submitYear}
               </p>
-            
-          <ul className="standingsContainer2">
+            </Stack>
+          </Grid>
+       
+          
+          <div style={{fontSize:"1.5rem",height:"70vh",overflowY:"auto",marginBottom:"2rem",overflowX:"hidden"}}>
+          <Grid item xs={12}>
+            <Grid container direction="column" spacing={2}>
              
           {submitYear >= 1958 && submitYear <= 2022 ? (
             cStandings.map((constructor,index)=>{
-              return (<li className="constructorsStandingsItems">
-              <span style={{
-                        color: "white",
-                        textAlign: "center",
-                        backgroundColor: "black",
-                        marginLeft: "40px",
-                        padding: "5px 5px 5px 5px",
-                        border: "solid transparent 2px",
-                        width: "3vw",
-                        height: "5vh",
-                      }}> {
-                        (constructor.position==(index+1).toString() && (index+1==1 || index+1==2 || index+1==3  ))?<img  style={{width:'1.3vw',height:'2.8vh'}} src={require(`./Assets/${index+1}medal.png`)}/>:<p>{constructor.position}</p>}
-        </span>
-              <span  style={{
-                        backgroundColor: "black",
-                        marginLeft: "35px",
-                        width: "17vw",
-                        padding: "7px 7px 7px 7px",
-                      }}>
-                {constructor.Constructor.name}
-              </span>
-              <span style={{
-                        textAlign: "center",
-                        backgroundColor: "black",
-                        marginLeft: "20px",
-                        width: "6vw",
-                        height: "4vh",
-                        padding: "5px 5px 5px 5px",
-                      }}>
-                {constructor.points}
-              </span>
-              <span
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        backgroundColor: "transparent",
-                        width: "2vw",
-                        height: "4vh",
-                        padding: "5px 5px 5px 5px",
-                      }}
-                    >
-                      pts
+              return (
+              <Grid item xs={6} spacing={2}>
+                <span
+                        style={{
+                          display: "flex",
+                          direction: "row",
+                          alignItems: "space-between",
+                        }}
+                      >
+                        <span
+                         style={{
+                          height: "3rem",
+                          width: "4rem",
+                          fontSize:"1.5rem",
+                          fontFamily:"Russo One",
+                          color: "#ffd700",
+                          margin: "0 1rem 0 1rem",
+                          backgroundColor: "black",
+                          padding: "0.5rem",
+                          textAlign: "center",
+                        }}
+                        >
+                          {constructor.position}
+                        </span>
+                        <span
+                          style={{
+                            height: "3rem",
+                            width: "20rem",
+                            fontSize:"1.2rem",
+                            color: "white",
+                            fontFamily:"Russo One",
+                            marginRight: "1rem",
+                            backgroundColor: "black",
+                            padding: "0.5rem",
+                            textAlign: "left",
+                          }}
+                        >
+                          {constructor.Constructor.name} 
+                        </span>
+                        <span
+                          style={{
+                            height: "3rem",
+                            width: "6rem",
+                            fontSize:"1.5rem",
+                            fontSize:"1.0rem",
+                            color: "white",
+                            marginRight: "1rem",
+                            fontFamily:"Russo One",
+                            backgroundColor: "black",
+                            padding: "0.5rem",
+                            textAlign: "left",
+                          }}
+                        >
+                          {constructor.points} 
+                        </span>
+                        <span
+                         style={{
+                          height: "3rem",
+                          width: "4rem",
+                          fontSize:"1.5rem",
+                          fontSize:"1.0rem",
+                          fontFamily:"Russo One",
+                          color: "white",
+                          marginRight: "1rem",
+                          backgroundColor: "black",
+                          padding: "0.5rem",
+                          textAlign: "center",
+                        }}
+                        >pts</span>
                     </span>
-            </li>);
+            </Grid>);
             })
            
              
@@ -236,8 +242,10 @@ const ConstructorsStandings = () => {
               Data only available from 1958 to 2021
             </p>
           )}
-        </ul>
+        </Grid>
+        </Grid>
         </div>
+        </Grid>
       ) : (
         <div
           className="standingsContainer"

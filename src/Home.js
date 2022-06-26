@@ -81,36 +81,13 @@ const App = () => {
               alignItems: "center",
               height: "100vh",
               width: "100vw",
-              backgroundColor:"#ffd700",
+              backgroundImage: "linear-gradient(to right,#000000,#2b0c13,#4f0a18,#720115,#940007)",
             }}
           >
             <NavigationTabs />
           </div>
         </Grid>
-        <Grid item xs={12}>
-          <div
-            style={{
-              height: "auto",
-              width: "100vw",
-              backgroundColor:"white",
-              color: "white",
-              overflow:"auto",
-            }}
-          >
-            <Grid container direction="row">
-              <Grid item xs={6}>
-                <div style={{marginTop:"2rem",overflow:"hidden",}} class="scroll" id="driverStandings">
-                <DriverStandings />
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div id="constStandings">
-                {/* <ConstructorsStandings /> */}
-                </div>
-              </Grid>
-            </Grid>
-          </div>
-        </Grid>
+        
       </Grid>
     </>
   );

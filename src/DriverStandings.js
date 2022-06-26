@@ -1,8 +1,9 @@
 import React, { useState, memo, useEffect, useMemo } from "react";
 import axios from "axios";
 import "./App.css";
-import { Input, Grid, TextField, Button, Stack } from "@mui/material";
-import { Paper, styled } from "@mui/material";
+import { Grid, TextField, Button, Stack } from "@mui/material";
+
+
 
 const DriverStandings = () => {
   const [dStandings, setDStandings] = useState([]);
@@ -81,19 +82,22 @@ const DriverStandings = () => {
       {dStandings[0] ? (
         <Grid
           container
-          spacing={1}
+          spacing={2}
           direction="column"
           alignItems="center"
           justifyContent="center"
         >
           <Grid item xs={12}>
-            <Stack spacing={2} direction="row">
+            <Grid container spacing={2}  direction="row" justifyContent="flex-start" alignItems="center">
+              <Grid item spacing={3}>
               <TextField
                 label=""
                 helperText="Submit any year from 1950 to 2022"
-                type="number"
+                
                 size="small"
                 color="secondary"
+                variant="standard"
+                sx={{input:{fontFamily:2,color:"white",fontFamily:'Russo One'}}}
                 onChange={handleInputYear}
               />
               <Button
@@ -102,29 +106,34 @@ const DriverStandings = () => {
                 
                 size="small"
               >
-               <span style={{fontWeight:"bold",color:"black"}}> Submit Year </span>
+
+               <span style={{fontFamily:"Russo One",fontWeight:"bold",color:"white"}}> Submit Year </span>
               </Button>
-            </Stack>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Stack spacing={2} direction="row">
+          <Grid container spacing={2}  direction="row" justifyContent="flex-start" alignItems="center">
+          <Grid item >
               <TextField
                 label=""
                 helperText="Submit any round from 1 to 22"
-                type="number"
+                
                 size="small"
                 color="secondary"
+                variant="standard"
+                sx={{input:{fontFamily:2,color:"white",fontFamily:'Russo One'}}}
                 onChange={handleInputRound}
               />
               <Button
                 onClick={handleSubmitRound}
-                
                 size="small"
                 color="secondary"
               >
-                <span style={{fontWeight:"bold",color:"black"}}>Submit Round </span> 
+                <span style={{fontFamily:"Russo One",fontWeight:"bold",color:"white"}}>Submit Round </span> 
               </Button>
-            </Stack>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={12}>
             <Stack
@@ -141,7 +150,7 @@ const DriverStandings = () => {
                   width: "50px",
                 }}
               />
-              <p style={{ color: "black", fontSize: "2rem" }}>
+              <p style={{ fontFamily:"Russo One",color: "#ffd700", fontSize: "1.5rem" }}>
                 Drivers Standings {submitYear}
               </p>
             </Stack>
@@ -163,11 +172,12 @@ const DriverStandings = () => {
                         <span
                           style={{
                             height: "3rem",
-                            width: "3rem",
-                            fontWeight: "bold",
-                            color: "black",
-                            marginRight: "1rem",
-                            backgroundColor: "gold",
+                            width: "4rem",
+                            fontSize:"1.5rem",
+                            fontFamily:"Russo One",
+                            color: "#ffd700",
+                            margin: "0 1rem 0 1rem",
+                            backgroundColor: "black",
                             padding: "0.5rem",
                             textAlign: "center",
                           }}
@@ -178,11 +188,12 @@ const DriverStandings = () => {
                         <span
                           style={{
                             height: "3rem",
-                            width: "15rem",
-                            fontWeight: "bold",
-                            color: "black",
+                            width: "20rem",
+                            fontSize:"1.2rem",
+                            color: "white",
+                            fontFamily:"Russo One",
                             marginRight: "1rem",
-                            backgroundColor: "gold",
+                            backgroundColor: "black",
                             padding: "0.5rem",
                             textAlign: "left",
                           }}
@@ -194,11 +205,12 @@ const DriverStandings = () => {
                           style={{
                             height: "3rem",
                             width: "6rem",
-                            fontWeight: "bold",
+                            fontSize:"1.5rem",
                             fontSize:"1.0rem",
-                            color: "black",
+                            color: "white",
                             marginRight: "1rem",
-                            backgroundColor: "gold",
+                            fontFamily:"Russo One",
+                            backgroundColor: "black",
                             padding: "0.5rem",
                             textAlign: "left",
                           }}
@@ -209,11 +221,12 @@ const DriverStandings = () => {
                           style={{
                             height: "3rem",
                             width: "4rem",
-                            fontWeight: "bold",
+                            fontSize:"1.5rem",
                             fontSize:"1.0rem",
-                            color: "black",
+                            fontFamily:"Russo One",
+                            color: "white",
                             marginRight: "1rem",
-                            backgroundColor: "gold",
+                            backgroundColor: "black",
                             padding: "0.5rem",
                             textAlign: "center",
                           }}
@@ -244,3 +257,4 @@ const DriverStandings = () => {
 };
 
 export default DriverStandings;
+
