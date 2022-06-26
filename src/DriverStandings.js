@@ -1,7 +1,8 @@
 import React, { useState, memo, useEffect, useMemo } from "react";
 import axios from "axios";
 import "./App.css";
-import { Input } from "@mui/material";
+import { Input, Grid, TextField, Button, Stack } from "@mui/material";
+import { Paper, styled } from "@mui/material";
 
 const DriverStandings = () => {
   const [dStandings, setDStandings] = useState([]);
@@ -78,171 +79,158 @@ const DriverStandings = () => {
   return (
     <>
       {dStandings[0] ? (
-        <div className="standingsContainer">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              margin: "20px",
-              backgroundColor: "transparent",
-            }}
-          >
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <input
-                id="year"
-                type="text"
-                style={{
-                  width:'12vw',
-                  marginRight: "10px",
-                  fontSize: "12px",
-                  color: "white",
-                  borderTop: "none",
-                  borderLeft: "none",
-                  borderRight: "none",
-                  borderBottom: "solid 2px black",
-                  backgroundColor: "transparent",
-                  fontFamily:'Russo One',
-                }}
-                placeholder={`${submitYear} (between  1958 to 2022)`}
+        <Grid
+          container
+          spacing={1}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Grid item xs={12}>
+            <Stack spacing={2} direction="row">
+              <TextField
+                label=""
+                helperText="Submit any year from 1950 to 2022"
+                type="number"
+                size="small"
+                color="secondary"
                 onChange={handleInputYear}
               />
-              <input
-                id="yearButton"
-                type="submit"
-                value="Submit Year"
-                style={{
-                  width: "7vw",
-                  marginTop: "10px",
-                  padding: "5px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  color: "rgba(206,147,9,0.9)",
-                  border: "solid 2px black",
-                  backgroundColor: "black ",
-                  backdropFilter: "blur(10px)",
-                  fontFamily:'Russo One',
-                }}
+              <Button
+                color="secondary"
                 onClick={handleSubmitYear}
-              />
-            </div>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <input
-                id="round"
-                type="text"
-                style={{
-                  width:'12vw',
-                  marginRight: "10px",
-                  fontSize: "12px",
-                  color: "white",
-                  borderTop: "none",
-                  borderLeft: "none",
-                  borderRight: "none",
-                  borderBottom: "solid 2px black",
-                  backgroundColor: "transparent",
-                  fontFamily:'Russo One',
-                }}
-                placeholder={`${totalRounds} (Rounds between 1 and ${totalRounds})`}
+                
+                size="small"
+              >
+               <span style={{fontWeight:"bold",color:"black"}}> Submit Year </span>
+              </Button>
+            </Stack>
+          </Grid>
+          <Grid item xs={12}>
+            <Stack spacing={2} direction="row">
+              <TextField
+                label=""
+                helperText="Submit any round from 1 to 22"
+                type="number"
+                size="small"
+                color="secondary"
                 onChange={handleInputRound}
               />
-
-              <input
-                id="roundButton"
-                type="submit"
-                value="Submit Round"
-                style={{
-                  width: "7vw",
-                  marginTop: "10px",
-                  padding: "5px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  color: "rgba(206,147,9,0.9)",
-                  border: "solid 2px black",
-                  backgroundColor: "black ",
-                  backdropFilter: "blur(10px)",
-                  fontFamily:'Russo One',
-                }}
+              <Button
                 onClick={handleSubmitRound}
+                
+                size="small"
+                color="secondary"
+              >
+                <span style={{fontWeight:"bold",color:"black"}}>Submit Round </span> 
+              </Button>
+            </Stack>
+          </Grid>
+          <Grid item xs={12}>
+            <Stack
+              spacing={2}
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <img
+                src={require("./Assets/f1Logo.png")}
+                style={{
+                  backgroundColor: "transparent",
+                  height: "50px",
+                  width: "50px",
+                }}
               />
-            </div>
-          </div>
-          <p id="standingsTitle">
-            {" "}
-            <img
-              src={require("./Assets/f1Logo.png")}
-              style={{
-                backgroundColor: "transparent",
-                height: "50px",
-                width: "50px",
-              }}
-            />
-            Drivers Standings {submitYear}
-          </p>
-          <ul className="standingsContainer2">
-            {submitYear >= 1950 && submitYear <= 2022 ? (
-              dStandings.map((driver, index) => {
-                return (
-                  <li className="driverStandingsItems">
-                    <span
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        backgroundColor: "black",
-                        marginLeft: "40px",
-                        padding: "5px 5px 5px 5px",
-                        border: "solid transparent 2px",
-                        width: "3vw",
-                        height: "5vh",
-                      }}
-                    >
-                      {
-                      (driver.position==(index+1).toString() && (index+1==1 || index+1==2 || index+1==3  ))?<img  style={{width:'1.3vw',height:'2.8vh'}} src={require(`./Assets/${index+1}medal.png`)}/>:<p>{driver.position}</p>}
-      
-                    </span>
-                    <span
-                      style={{
-                        backgroundColor: "black",
-                        marginLeft: "35px",
-                        width: "17vw",
-                        padding: "7px 7px 7px 7px",
-                      }}
-                    >
-                      {driver.Driver.givenName} {driver.Driver.familyName}
-                    </span>
-                    <span
-                      style={{
-                        textAlign: "center",
-                        backgroundColor: "black",
-                        marginLeft: "20px",
-                        width: "6vw",
-                        height: "4vh",
-                        padding: "5px 5px 5px 5px",
-                      }}
-                    >
-                      {driver.points}
-                    </span>
-                    <span
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        backgroundColor: "transparent",
-                        width: "2vw",
-                        height: "4vh",
-                        padding: "5px 5px 5px 5px",
-                      }}
-                    >
-                      pts
-                    </span>
-                  </li>
-                );
-              })
-            ) : (
-              <p className="driverStandingsItems">
-                Data only available from 1950 to 2021
+              <p style={{ color: "black", fontSize: "2rem" }}>
+                Drivers Standings {submitYear}
               </p>
-            )}
-          </ul>
-        </div>
+            </Stack>
+          </Grid>
+          <div style={{fontSize:"1.5rem",height:"70vh",overflowY:"auto",marginBottom:"2rem",overflowX:"hidden"}}>
+          <Grid item xs={12}>
+            <Grid container direction="column" spacing={2}>
+              {submitYear >= 1950 && submitYear <= 2022 ? (
+                dStandings.map((driver, index) => {
+                  return (
+                    <Grid item xs={6} spacing={2}>
+                      <span
+                        style={{
+                          display: "flex",
+                          direction: "row",
+                          alignItems: "space-between",
+                        }}
+                      >
+                        <span
+                          style={{
+                            height: "3rem",
+                            width: "3rem",
+                            fontWeight: "bold",
+                            color: "black",
+                            marginRight: "1rem",
+                            backgroundColor: "gold",
+                            padding: "0.5rem",
+                            textAlign: "center",
+                          }}
+                        >
+                          {driver.position}
+                        </span>
+
+                        <span
+                          style={{
+                            height: "3rem",
+                            width: "15rem",
+                            fontWeight: "bold",
+                            color: "black",
+                            marginRight: "1rem",
+                            backgroundColor: "gold",
+                            padding: "0.5rem",
+                            textAlign: "left",
+                          }}
+                        >
+                          {driver.Driver.givenName} {driver.Driver.familyName}
+                        </span>
+
+                        <span
+                          style={{
+                            height: "3rem",
+                            width: "6rem",
+                            fontWeight: "bold",
+                            fontSize:"1.0rem",
+                            color: "black",
+                            marginRight: "1rem",
+                            backgroundColor: "gold",
+                            padding: "0.5rem",
+                            textAlign: "left",
+                          }}
+                        >
+                          {driver.points} 
+                        </span>
+                        <span
+                          style={{
+                            height: "3rem",
+                            width: "4rem",
+                            fontWeight: "bold",
+                            fontSize:"1.0rem",
+                            color: "black",
+                            marginRight: "1rem",
+                            backgroundColor: "gold",
+                            padding: "0.5rem",
+                            textAlign: "center",
+                          }}
+                        >pts</span>
+                      </span>
+                    </Grid>
+                  );
+                })
+              ) : (
+                <p className="driverStandingsItems">
+                  Data only available from 1950 to 2021
+                </p>
+              )}
+            </Grid>
+          </Grid>
+          </div>
+        </Grid>
       ) : (
         <div
           className="standingsContainer"

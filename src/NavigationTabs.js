@@ -11,39 +11,56 @@ import { CardMedia } from "@mui/material";
 import { Grid } from "@mui/material";
 
 const NavigationTabs = () => {
-  const [driverTab, setDriverTab] = useState("driversStandings2.png");
-  const [constTab, setConstTab] = useState("ConstructorsStandings2.png");
-  const [trackTab, setTrackTab] = useState("trackLocator2.png");
+  
 
   const handleDriverMouseOver = () => {
-    setDriverTab("driversStandings1.png");
+  
     document.getElementById("tabs").classList.add("bgImageDriver");
+    document.getElementById("driverStandingsTab").style.opacity=1;
+    document.getElementById("constStandingsTab").style.opacity=0.2;
+    document.getElementById("tracksTab").style.opacity=0.2;
+    document.getElementById("")
   };
 
   const handleDriverMouseOut = () => {
-    setDriverTab("driversStandings2.png");
+   
     document.getElementById("tabs").classList.remove("bgImageDriver");
+    document.getElementById("driverStandingsTab").style.opacity=1;
+    document.getElementById("constStandingsTab").style.opacity=1;
+    document.getElementById("tracksTab").style.opacity=1;
   };
 
   const handleConstMouseOver = () => {
-    setConstTab("ConstructorsStandings1.png");
+    
     document.getElementById("tabs").classList.add("bgImageConst");
+    document.getElementById("driverStandingsTab").style.opacity=0.2;
+    document.getElementById("constStandingsTab").style.opacity=1;
+    document.getElementById("tracksTab").style.opacity=0.2;
     
   };
 
   const handleConstMouseOut = () => {
-    setConstTab("ConstructorsStandings2.png");
+   
     document.getElementById("tabs").classList.remove("bgImageConst");
+    document.getElementById("driverStandingsTab").style.opacity=1;
+    document.getElementById("constStandingsTab").style.opacity=1;
+    document.getElementById("tracksTab").style.opacity=1;
   };
 
   const handleTrackMouseOver = () => {
-    setTrackTab("trackLocator1.png");
+    
     document.getElementById("tabs").classList.add("bgImageTrack");
+    document.getElementById("driverStandingsTab").style.opacity=0.2;
+    document.getElementById("constStandingsTab").style.opacity=0.2;
+    document.getElementById("tracksTab").style.opacity=1;
   };
 
   const handleTrackMouseOut = () => {
-    setTrackTab("trackLocator2.png");
+    
     document.getElementById("tabs").classList.remove("bgImageTrack");
+    document.getElementById("driverStandingsTab").style.opacity=1;
+    document.getElementById("constStandingsTab").style.opacity=1;
+    document.getElementById("tracksTab").style.opacity=1;
   };
   
 
@@ -60,6 +77,7 @@ const NavigationTabs = () => {
           <Card sx={{ backgroundColor: "transparent" }}>
             <CardContent>
               <a
+                id="driverStandingsTab"
                 onMouseOver={handleDriverMouseOver}
                 onMouseOut={handleDriverMouseOut}
                 href="#standings"
@@ -68,7 +86,7 @@ const NavigationTabs = () => {
                 <CardMedia
                   component="img"
                   height="1"
-                  src={require(`./Assets/${driverTab}`)}
+                  src={require("./Assets/driversStandings2.png")}
                   alt="Drivers standings"
                 />
               </a>
@@ -79,6 +97,7 @@ const NavigationTabs = () => {
           <Card sx={{ backgroundColor: "transparent" }}>
             <CardContent>
               <a
+               id="constStandingsTab"
                 href="#standings"
                 onMouseOver={handleConstMouseOver}
                 onMouseOut={handleConstMouseOut}
@@ -87,7 +106,7 @@ const NavigationTabs = () => {
                 <CardMedia
                   component="img"
                   height="1"
-                  src={require(`./Assets/${constTab}`)}
+                  src={require("./Assets/ConstructorsStandings2.png")}
                   alt="Constructors standings"
                 />
               </a>
@@ -98,6 +117,7 @@ const NavigationTabs = () => {
           <Card sx={{ backgroundColor: "transparent" }}>
             <CardContent>
               <a
+               id="tracksTab"
                 href="/TrackLocator"
                 onMouseOver={handleTrackMouseOver}
                 onMouseOut={handleTrackMouseOut}
@@ -107,7 +127,7 @@ const NavigationTabs = () => {
                 <CardMedia
                   component="img"
                   height="1"
-                  src={require(`./Assets/${trackTab}`)}
+                  src={require("./Assets/trackLocator2.png")}
                   alt="Track Locator"
                 />
               </a>

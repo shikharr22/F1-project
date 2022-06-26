@@ -47,37 +47,68 @@ const App = () => {
           <div
             style={{
               display: "flex",
-              flexDirection:'column',
+              flexDirection: "column",
               justifyContent: "center",
-              alignItems:"center",
+              alignItems: "center",
               height: "35vh",
               width: "100vw",
-              gap:10,
+              gap: 10,
               backgroundColor: "black",
             }}
           >
             <NavigationRace />
-          
-            <a href="#navigationTabs">
-              <p style={{fontSize:"2vh",color:"#ffd700",fontWeight:'bold'}}>EXPLORE MORE</p>
+
+            <a href="#tabs">
+              <p
+                style={{
+                  fontSize: "2vh",
+                  color: "#ffd700",
+                  fontWeight: "bold",
+                }}
+              >
+                EXPLORE MORE
+              </p>
             </a>
           </div>
         </Grid>
         <Grid item xs={12}>
-          <div id="tabs" style={{display:"flex",direction:"column",justifyContent:"center",alignItems:"center",height: "100vh", width: "100vw" }}>
-            <NavigationTabs/>  
+          <div
+            id="tabs"
+            style={{
+              display: "flex",
+              direction: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              width: "100vw",
+              backgroundColor:"#ffd700",
+            }}
+          >
+            <NavigationTabs />
           </div>
         </Grid>
         <Grid item xs={12}>
           <div
             style={{
-              height: "100vh",
+              height: "auto",
               width: "100vw",
-              backgroundColor: "black",
+              backgroundColor:"white",
               color: "white",
+              overflow:"auto",
             }}
           >
-            standings
+            <Grid container direction="row">
+              <Grid item xs={6}>
+                <div style={{marginTop:"2rem",overflow:"hidden",}} class="scroll" id="driverStandings">
+                <DriverStandings />
+                </div>
+              </Grid>
+              <Grid item xs={6}>
+                <div id="constStandings">
+                {/* <ConstructorsStandings /> */}
+                </div>
+              </Grid>
+            </Grid>
           </div>
         </Grid>
       </Grid>

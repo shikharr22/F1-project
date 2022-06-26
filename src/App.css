@@ -119,25 +119,7 @@
   justify-content: center;
   align-items: center;
 }
-#tabs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: white;
-  margin-top: 20vh;
-}
-.tabs {
-  width: 15%;
-  height: 85%;
-  margin: 10px;
-  cursor: pointer;
-  opacity: 1;
-  background-color: transparent;
-  transform: scale(0.8);
-}
+
 
 #standings {
   display: flex;
@@ -252,6 +234,20 @@
   background-color: transparent;
 }
 
+.scrollbar{
+  
+*::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: silver;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+}
+
 #news {
   display: flex;
   flex-direction: column;
@@ -296,8 +292,6 @@
 .bgImageDriver {
   background-image: url("https://e0.365dm.com/22/03/2048x1152/skysports-f1-2022-driver-preview_5706316.jpg  ");
   background-size: cover;
-  height: 10px;
-  width: 10px;
 }
 .bgImageConst {
   background-image: url("https://e0.365dm.com/19/10/2048x1152/skysports-mercedes-lewis-hamilton_4803555.jpg");
