@@ -5,11 +5,10 @@ import PrevRace from "./PrevRace.js";
 import UpcomingRace from "./UpcomingRace.js";
 import NavigationRace from "./NavigationRace.js";
 import NavigationTabs from "./NavigationTabs";
-import DriverStandings from "./DriverStandings";
-import ConstructorsStandings from "./ConstructorsStandings";
-import News from "./News";
-import { Grid, Typography } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
+import { Grid } from "@mui/material";
+import ExpandMoreSharpIcon from '@mui/icons-material/ExpandMoreSharp';
+
 
 const App = () => {
   console.log("App Render");
@@ -61,12 +60,17 @@ const App = () => {
             <a href="#tabs">
               <p
                 style={{
-                  fontSize: "2vh",
+                  display:"flex",
+                  direction:"column",
+                  width:"2rem",
+                  height:"2rem",
                   color: "#ffd700",
                   fontWeight: "bold",
+                  
                 }}
               >
-                EXPLORE MORE
+                <ExpandMoreSharpIcon/>
+               
               </p>
             </a>
           </div>
@@ -81,7 +85,9 @@ const App = () => {
               alignItems: "center",
               height: "100vh",
               width: "100vw",
+              
               backgroundImage: "linear-gradient(to right,#000000,#2b0c13,#4f0a18,#720115,#940007)",
+              overflowY:"hidden",
             }}
           >
             <NavigationTabs />

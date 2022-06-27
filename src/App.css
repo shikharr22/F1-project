@@ -309,13 +309,17 @@
 
 #ds{
   display:none;
+  margin-left:5rem;
   padding:2rem 0 0 1rem;
 }
 
 #cs{
   display:none;
+  margin-left:5rem;
   padding:2rem 0 0 1rem;
 }
+
+
 
 /* Animations */
 .spinner {

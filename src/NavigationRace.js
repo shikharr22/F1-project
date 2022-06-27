@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { ButtonGroup, Button } from "@mui/material";
 
+
 const NavigationRace = () => {
   const handlePrev = () => {
     document.getElementById("prevRace").style =
