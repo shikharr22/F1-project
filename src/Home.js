@@ -8,6 +8,7 @@ import NavigationTabs from "./NavigationTabs";
 
 import { Grid } from "@mui/material";
 import ExpandMoreSharpIcon from '@mui/icons-material/ExpandMoreSharp';
+import F1grid from "./F1grid";
 
 
 const App = () => {
@@ -91,6 +92,25 @@ const App = () => {
             }}
           >
             <NavigationTabs />
+          </div>
+        </Grid>
+        <Grid item xs={12}>
+          <div
+            id="F1grid"
+            style={{
+              display: "flex",
+              height:"100vh",
+              width:"100vw",
+              direction: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              width: "100vw",
+              backgroundColor:"black",
+              overflowY:"hidden",
+            }}
+          >
+           <F1grid/>
           </div>
         </Grid>
         
