@@ -319,6 +319,17 @@
   padding:2rem 0 0 1rem;
 }
 
+.animateHoverIn{
+  animation: hoverExpandIn 1s  ease;
+  animation-fill-mode: forwards;  
+  
+}
+.animateHoverOut{
+  animation: hoverExpandOut 1s  ease;
+  animation-fill-mode: forwards;  
+  
+}
+
 
 
 /* Animations */
@@ -357,3 +368,22 @@
     transform: rotate(1turn);
   }
 }
+
+@keyframes hoverExpandIn{
+  0%{
+    transform:scale(0.7);
+  }
+  100%{
+    transform:scale(0.72);
+  }
+}
+
+@keyframes hoverExpandOut{
+  0%{
+    transform:scale(0.72);
+  }
+  100%{
+    transform:scale(0.7);
+  }
+}
+

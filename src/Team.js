@@ -14,21 +14,25 @@ const Team = (props) => {
   console.log(driver1_name);
   
   const handleMouseIn1=()=>{
-      document.getElementById("driver1").style.transform="scale(0.78)";
+      document.getElementById("driver1").classList.add("animateHoverIn");
+      document.getElementById("driver1").classList.remove("animateHoverOut");
       
   }
 
   const handleMouseOut1=()=>{
-    document.getElementById("driver1").style.transform="scale(0.75)";
+    document.getElementById("driver1").classList.add("animateHoverOut");
+    document.getElementById("driver1").classList.remove("animateHoverIn");
 }
 
 const handleMouseIn2=()=>{
-  document.getElementById("driver2").style.transform="scale(0.78)";
+  document.getElementById("driver2").classList.add("animateHoverIn");
+      document.getElementById("driver2").classList.remove("animateHoverOut");
   
 }
 
 const handleMouseOut2=()=>{
-document.getElementById("driver2").style.transform="scale(0.75)";
+  document.getElementById("driver2").classList.add("animateHoverOut");
+  document.getElementById("driver2").classList.remove("animateHoverIn");
 }
 
   return (
@@ -42,7 +46,7 @@ document.getElementById("driver2").style.transform="scale(0.75)";
             onMouseOut={handleMouseOut1}
             style={{
               backgroundColor: "white",
-              height: "100vh",
+              height: "90vh",
               width: "100vw",
               transform:"scale(0.7)",
               
@@ -59,13 +63,13 @@ document.getElementById("driver2").style.transform="scale(0.75)";
                     display: "flex",
                     alignitems: "center",
                     backgroundColor: "white",
-                    height: "70vh",
+                    height: "60vh",
                     width: "100vw",
                     
                   }}
                 >
                   <img
-                    style={{ width: "40%", height: "100%" }}
+                    style={{ width: "30%", height: "100%" }}
                     src={driver1_pic}
                   />
                 </div>
@@ -76,7 +80,7 @@ document.getElementById("driver2").style.transform="scale(0.75)";
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: `${color}`,
-                    height: "30vh",
+                    height: "40vh",
                     width: "100vw",
                     paddingLeft: "2rem",
                    
@@ -113,7 +117,7 @@ document.getElementById("driver2").style.transform="scale(0.75)";
           onMouseOut={handleMouseOut2}
             style={{
               backgroundColor: "white",
-              height: "100vh",
+              height: "90vh",
               width: "100vw",
               transform:"scale(0.7)",
               
@@ -131,12 +135,12 @@ document.getElementById("driver2").style.transform="scale(0.75)";
                     display: "flex",
                     alignitems: "center",
                     backgroundColor: "white",
-                    height: "70vh",
+                    height: "60vh",
                     width: "100vw",
                   }}
                 >
                   <img
-                    style={{ width: "40%", height: "100%" }}
+                    style={{ width: "30%", height: "100%" }}
                     src={driver2_pic}
                   />
                 </div>
@@ -147,7 +151,7 @@ document.getElementById("driver2").style.transform="scale(0.75)";
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: `${color}` ,
-                    height: "30vh",
+                    height: "40vh",
                     width: "100vw",
                     paddingLeft: "2rem",
                   }}

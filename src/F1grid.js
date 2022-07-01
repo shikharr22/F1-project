@@ -102,8 +102,11 @@ const F1grid = () => {
         <Grid item xs={3}>
           <div
             style={{
-              paddingTop: "1rem",
-              backgroundColor:"white",
+              display:"flex",
+              flexDirection:"column",
+              alignItems:"center",
+              padding: "1rem",
+              backgroundColor:"black",
               height: "100vh",
               width: "100vw",
             }}
@@ -115,25 +118,20 @@ const F1grid = () => {
                     <div
                       onClick={team.handle}
                       style={{
-                        height: "10vh",
+                        height: "6vh",
                         width: "100vw",
-                        paddingLeft: "2rem",
+                        padding: "1rem",
                         cursor: "pointer",
                       }}
                     >
                       <Grid container direction="row" alignItems="center">
-                        <Grid item xs={1}>
-                          <img
-                            style={{ width: "6rem", height: "4rem",transform:"scale(0.8)"}}
-                            src={team.logo}
-                          />
-                        </Grid>
+                        
                         <Grid item xs={3}>
                           <p
                             style={{
                               fontFamily: "Russo one",
                               fontSize: "2rem",
-                              color: "black",
+                              color: "white",
                             }}
                           >
                             {team.name}
