@@ -47,8 +47,9 @@ const handleMouseOut2=()=>{
             style={{
               backgroundColor: "white",
               height: "90vh",
-              width: "100vw",
+              width: "90%",
               transform:"scale(0.7)",
+             
               
             }}
           >
@@ -64,7 +65,7 @@ const handleMouseOut2=()=>{
                     alignitems: "center",
                     backgroundColor: "white",
                     height: "60vh",
-                    width: "100vw",
+                    width: "100%",
                     
                   }}
                 >
@@ -80,7 +81,7 @@ const handleMouseOut2=()=>{
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: `${color}`,
-                    height: "40vh",
+                    height: "30vh",
                     width: "100vw",
                     paddingLeft: "2rem",
                    
@@ -89,7 +90,7 @@ const handleMouseOut2=()=>{
                   <p
                     style={{
                       fontFamily: "Russo one",
-                      fontSize: "4rem",
+                      fontSize: "5rem",
                       color: "black",
                     }}
                   >
@@ -118,8 +119,9 @@ const handleMouseOut2=()=>{
             style={{
               backgroundColor: "white",
               height: "90vh",
-              width: "100vw",
+              width: "90%",
               transform:"scale(0.7)",
+            
               
             }}
           >
@@ -151,7 +153,7 @@ const handleMouseOut2=()=>{
                     display: "flex",
                     flexDirection: "column",
                     backgroundColor: `${color}` ,
-                    height: "40vh",
+                    height: "30vh",
                     width: "100vw",
                     paddingLeft: "2rem",
                   }}
@@ -159,7 +161,7 @@ const handleMouseOut2=()=>{
                   <p
                     style={{
                       fontFamily: "Russo one",
-                      fontSize: "4rem",
+                      fontSize: "5rem",
                       color: "black",
                     }}
                   >

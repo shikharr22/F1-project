@@ -6,10 +6,9 @@ import UpcomingRace from "./UpcomingRace.js";
 import NavigationRace from "./NavigationRace.js";
 import NavigationTabs from "./NavigationTabs";
 
-import { Grid } from "@mui/material";
-import ExpandMoreSharpIcon from '@mui/icons-material/ExpandMoreSharp';
+import { Grid, Button } from "@mui/material";
+import ExpandMoreSharpIcon from "@mui/icons-material/ExpandMoreSharp";
 import F1grid from "./F1grid";
-
 
 const App = () => {
   console.log("App Render");
@@ -59,20 +58,17 @@ const App = () => {
             <NavigationRace />
 
             <a href="#tabs">
-              <p
-                style={{
-                  display:"flex",
-                  direction:"column",
-                  width:"2rem",
-                  height:"2rem",
-                  color: "#ffd700",
-                  fontWeight: "bold",
-                  
+              <Button
+                variant="contained"
+                sx={{
+                  fontFamily: "Russo One",
+                  color: "white",
+                  fontSize: "1.2rem",
                 }}
+                color="secondary"
               >
-                <ExpandMoreSharpIcon/>
-               
-              </p>
+                Explore More
+              </Button>
             </a>
           </div>
         </Grid>
@@ -86,9 +82,10 @@ const App = () => {
               alignItems: "center",
               height: "100vh",
               width: "100vw",
-              
-              backgroundImage: "linear-gradient(to right,#000000,#2b0c13,#4f0a18,#720115,#940007)",
-              overflowY:"hidden",
+              paddingTop:"rem",
+              backgroundImage:
+                "linear-gradient(to right,#000000,#2b0c13,#4f0a18,#720115,#940007)",
+              overflowY: "hidden",
             }}
           >
             <NavigationTabs />
@@ -99,21 +96,20 @@ const App = () => {
             id="F1grid"
             style={{
               display: "flex",
-              height:"100vh",
-              width:"100vw",
+              height: "100vh",
+              width: "100vw",
               direction: "column",
               justifyContent: "center",
               alignItems: "center",
               height: "100vh",
               width: "100vw",
-              backgroundColor:"black",
-              overflowY:"hidden",
+              backgroundColor: "black",
+              overflowY: "hidden",
             }}
           >
-           <F1grid/>
+            <F1grid />
           </div>
         </Grid>
-        
       </Grid>
     </>
   );

@@ -11,6 +11,7 @@ import { CardMedia } from "@mui/material";
 import { Grid, Stack } from "@mui/material";
 import DriverStandings from "./DriverStandings";
 import ConstructorsStandings from "./ConstructorsStandings";
+import ExpandMoreSharpIcon from "@mui/icons-material/ExpandMoreSharp";
 
 const NavigationTabs = () => {
   const handleDriverMouseOver = () => {
@@ -60,7 +61,6 @@ const NavigationTabs = () => {
     document.getElementById("constStandingsTab").style.opacity = 0.2;
     document.getElementById("tracksTab").style.opacity = 0.2;
     document.getElementById("GridTab").style.opacity = 1;
-
   };
 
   const handleGridMouseOut = () => {
@@ -81,136 +81,132 @@ const NavigationTabs = () => {
     document.getElementById("ds").style.display = "none";
   };
 
-
   return (
-    <>
-      <Grid container direction="row" spacing={3}>
-        <Grid container xs={3} direction="row">
-          <Stack direction="row">
-            <div style={{ width: "100vw", height: "50vh" ,marginTop:"2rem",marginLeft:"2rem"}}>
-              <div
-                style={{ width: "15rem", height: "20rem", overflowY: "hidden" }}
-              >
-                <Card sx={{ backgroundColor: "transparent" }}>
-                  <CardContent>
-                    <a
-                      id="driverStandingsTab"
-                      onMouseOver={handleDriverMouseOver}
-                      onMouseOut={handleDriverMouseOut}
-                      onClick={handleDriverMouseClick}
-                      href="#standings"
-                      style={{ backgroundColor: "transparent" }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="1"
-                        src={require("./Assets/driversStandings2.png")}
-                        alt="Drivers standings"
-                      />
-                    </a>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-            <div style={{ width: "100vw", height: "50vh",marginTop:"2rem",marginLeft:"2rem"}}>
-            <div
-                style={{ width: "15rem", height: "20rem", overflowY: "hidden" }}
-              >
-                <Card sx={{ backgroundColor: "transparent" }}>
-                  <CardContent>
-                    <a
-                      id="constStandingsTab"
-                      href="#standings"
-                      onMouseOver={handleConstMouseOver}
-                      onMouseOut={handleConstMouseOut}
-                      onClick={handleConstMouseClick}
-                      style={{ backgroundColor: "transparent" }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="1"
-                        src={require("./Assets/ConstructorsStandings2.png")}
-                        alt="Constructors standings"
-                      />
-                    </a>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </Stack>
-          <Stack direction="row">
-            <div
-              style={{ width: "100vw", height: "50vh" ,marginLeft:"2rem"}}
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center"}}
+    >
+      <Grid container direction="row" spacing={2}>
+     
+        <Grid item direction="row" xs={4}>
+        <div style={{paddingTop:"2rem",height:"100vh",width:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+          <Grid item xs={6}>
+            <a
+              id="driverStandingsTab"
+              onMouseOver={handleDriverMouseOver}
+              onMouseOut={handleDriverMouseOut}
+              onClick={handleDriverMouseClick}
+              href="#standings"
             >
-               <div
-                style={{ width: "15rem", height: "20rem", overflowY: "hidden" }}
+              <p
+                style={{
+                 
+                  textAlign: "center",
+                  fontFamily: "Russo One",
+                  fontSize: "2rem",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
               >
-                <Card sx={{ backgroundColor: "transparent" }}>
-                  <CardContent>
-                    <a
-                      id="tracksTab"
-                      href="/TrackLocator"
-                      onMouseOver={handleTrackMouseOver}
-                      onMouseOut={handleTrackMouseOut}
-                      target="_blank"
-                      style={{ backgroundColor: "transparent" }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="1"
-                        src={require("./Assets/trackLocator2.png")}
-                        alt="Track Locator"
-                      />
-                    </a>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-            <div
-              style={{
-                width: "100vw",
-                height: "50vh",
-                marginLeft:"2rem"
-              }}
+                Drivers Standings
+              </p>
+            </a>
+          </Grid>
+          <Grid item xs={6}>
+            <a
+              id="constStandingsTab"
+              onMouseOver={handleConstMouseOver}
+              onMouseOut={handleConstMouseOut}
+              onClick={handleConstMouseClick}
+              href="#standings"
             >
-              <div
-                style={{ width: "15rem", height: "20rem", overflowY: "hidden" }}
+              <p
+                style={{
+                  
+                  textAlign: "center",
+                  fontFamily: "Russo One",
+                  fontSize: "2rem",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
               >
-                <Card sx={{ backgroundColor: "transparent" }}>
-                  <CardContent>
-                    <a
-                      id="GridTab"
-                      href=""
-                      onMouseOver={handleGridMouseOver}
-                      onMouseOut={handleGridMouseOut}
-                      target="_blank"
-                      style={{ backgroundColor: "transparent" }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="1"
-                        src={require("./Assets/grid2022.png")}
-                        alt="Grid 2022"
-                      />
-                    </a>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </Stack>
+                Constructors Standings
+              </p>
+            </a>
+          </Grid>
+          <Grid item xs={6}>
+            <a
+              id="tracksTab"
+              href="/TrackLocator"
+              onMouseOver={handleTrackMouseOver}
+              onMouseOut={handleTrackMouseOut}
+              target="_blank"
+            >
+              <p
+                style={{
+                  
+                  textAlign: "center",
+                  fontFamily: "Russo One",
+                  fontSize: "2rem",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
+              >
+                Track Locator
+              </p>
+            </a>
+          </Grid>
+          <Grid item xs={6}>
+            <a
+              id="GridTab"
+              href="#F1grid"
+              onMouseOver={handleGridMouseOver}
+              onMouseOut={handleGridMouseOut}
+            >
+              <p
+                style={{
+                 
+                  textAlign: "center",
+                  fontFamily: "Russo One",
+                  fontSize: "2rem",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
+              >
+                F1 Grid
+              </p>
+            </a>
+           
+          </Grid>
+          </div>
         </Grid>
-        <Grid container xs={8} direction="row">
-            <Grid item xs={12}>
-              <div id="ds">
-                <DriverStandings />
-              </div>
-              <div id="cs">
-                <ConstructorsStandings />
-              </div>
-            </Grid> 
+        
+        <Grid item xs={8} direction="row">
+          <div style={{width:"100vw",height:"100vh"}}>
+          <Grid item xs={8}>
+            <div id="ds">
+              <DriverStandings />
+            </div>
+            <div id="cs">
+              <ConstructorsStandings />
+            </div>
+          </Grid>
+          </div>
         </Grid>
       </Grid>
-    </>
+      <a href="#">
+        <p
+          style={{
+            width: "2rem",
+            height: "2rem",
+            color: "#ffd700",
+            fontWeight: "bold",
+            marginBottom: "2rem",
+          }}
+        >
+          <ExpandMoreSharpIcon />
+        </p>
+      </a>
+    </div>
   );
 };
 

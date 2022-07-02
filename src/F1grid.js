@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import Team from "./Team";
+import "./App.css";
 
 const F1grid = () => {
   const [d1_pic, setD1_pic] = useState("");
@@ -57,6 +58,36 @@ const F1grid = () => {
     setC("#00ffff");
   };
 
+  const handleRedbull = () => {
+    document.getElementById("team").style.display = "";
+    setD1_pic(
+      "https://www.formula1.com/content/fom-website/en/drivers/max-verstappen/_jcr_content/image.img.1920.medium.jpg/1646819045507.jpg"
+    );
+    setD1_name("Max Verstappen");
+    setD1_number("33");
+    setD2_pic(
+      "https://www.formula1.com/content/fom-website/en/drivers/sergio-perez/_jcr_content/image.img.1920.medium.jpg/1646819228700.jpg"
+    );
+    setD2_name("Sergio Perez");
+    setD2_number("11");
+    setC("#23326A");
+  };
+
+  const handleAstonmartin = () => {
+    document.getElementById("team").style.display = "";
+    setD1_pic(
+      "https://www.formula1.com/content/fom-website/en/drivers/sebastian-vettel/_jcr_content/image.img.1920.medium.jpg/1646818813887.jpg"
+    );
+    setD1_name("Sebastian vettel");
+    setD1_number("5");
+    setD2_pic(
+      "https://www.formula1.com/content/fom-website/en/drivers/lance-stroll/_jcr_content/image.img.1920.medium.jpg/1648135171947.jpg"
+    );
+    setD2_name("Lance Stroll");
+    setD2_number("22");
+    setC("#004225");
+  };
+
   let teams_array = [
     {
       name: "Mclaren",
@@ -69,10 +100,21 @@ const F1grid = () => {
       handle: handleFerrari,
     },
     {
-      name:"Mercedez",
-      logo:"https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col-retina/image.png",
-      handle:handleMercedez,
-    }
+      name: "Mercedez",
+      logo: "https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col-retina/image.png",
+      handle: handleMercedez,
+    },
+    {
+      name: "Red Bull",
+      logo: "https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col-retina/image.png",
+      handle: handleRedbull,
+    },
+    {
+      name: "Aston Martin",
+      logo: "https://www.formula1.com/content/dam/fom-website/teams/2022/mercedes-logo.png.transform/2col-retina/image.png",
+      handle: handleAstonmartin,
+    },
+    
   ];
 
   return (
@@ -84,6 +126,7 @@ const F1grid = () => {
               backgroundColor: "black",
               height: "100vh",
               width: "100vw",
+              overflowY:"auto",
             }}
           >
             <div id="team" style={{ display: "none" }}>
@@ -102,42 +145,39 @@ const F1grid = () => {
         <Grid item xs={3}>
           <div
             style={{
-              display:"flex",
-              flexDirection:"column",
-              alignItems:"center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
               padding: "1rem",
-              backgroundColor:"black",
+              backgroundImage: "linear-gradient(to right,#000000,#2b0c13,#4f0a18,#720115,#940007)",
               height: "100vh",
               width: "100vw",
             }}
           >
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction="column" spacing={2} justifyContent="center">
               {teams_array.map((team) => {
                 return (
-                  <Grid item xs={4}>
+                  <Grid item>
                     <div
                       onClick={team.handle}
                       style={{
                         height: "6vh",
                         width: "100vw",
-                        padding: "1rem",
+                        margin: "1rem",
                         cursor: "pointer",
                       }}
                     >
-                      <Grid container direction="row" alignItems="center">
-                        
-                        <Grid item xs={3}>
+                      
                           <p
                             style={{
                               fontFamily: "Russo one",
                               fontSize: "2rem",
-                              color: "white",
+                              color: "#ffd700",
                             }}
                           >
                             {team.name}
                           </p>
-                        </Grid>
-                      </Grid>
+                       
                     </div>
                   </Grid>
                 );
