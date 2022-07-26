@@ -152,7 +152,7 @@ const TrackLocator = () => {
       <MapContainer
         center={[currLat, currLong]}
         zoom={15}
-        style={{ height: "100vh", width: "100vw" }}
+        style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
           attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
@@ -313,9 +313,10 @@ const TrackLocator = () => {
           position: "absolute",
           top: "0%",
           left: "4%",
-          width: "20px",
-          height: "20px",
+          width: "6vw",
+          height: "4vh",
           zIndex: 1000000 ,
+          backgroundColor:"transparent"
         }}
       >
         <p>
@@ -470,9 +471,9 @@ const TrackLocator = () => {
           position: "absolute",
           top: "2%",
           right: "6%",
-          width: "20px",
-          height: "20px",
-          zIndex: 10000 ,
+          width: "6vw",
+          height: "4vh",
+          zIndex: 100 ,
         }}
       >
         <p>
@@ -481,7 +482,7 @@ const TrackLocator = () => {
           </a>
         </p>
       </div>
-        <DisplayMap />
+       <DisplayMap />
       </div>
       
     </>
